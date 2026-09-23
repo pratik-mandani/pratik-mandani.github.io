@@ -1,9 +1,31 @@
 import { ProjectCaseStudy } from '../../types';
-import { getProjectImage, getProjectTechnologies } from '../sections/FeaturedProjects';
 
 interface Props {
   project: ProjectCaseStudy | null;
   onClose: () => void;
+}
+
+function getProjectImage(project: ProjectCaseStudy): string {
+  if (project.id === 'symbian-common-control-card') return '/images/pcb/control-card.svg';
+  if (project.id === 'symbian-coin-interface-pcb') return '/images/pcb/coin-interface.svg';
+  if (project.id === 'symbian-unattended-vending-system') return '/images/vending/qr-system.svg';
+  if (project.id === 'symbian-production-200-units') return '/images/symbian/production-testing.svg';
+  if (project.id === 'kotl-emotional-robot') return '/images/kotl/kotl-robot.svg';
+  if (project.category === 'web' || project.id.startsWith('altius-')) return '/images/web/web-platform.svg';
+  if (project.media && project.media.length > 0 && project.media[0].path) {
+    return project.media[0].path;
+  }
+  return '/images/web/web-platform.svg';
+}
+
+function getProjectTechnologies(project: ProjectCaseStudy): string[] {
+  const list: string[] = [];
+  if (project.hardwareSpecs) list.push(...project.hardwareSpecs);
+  if (project.firmwareSpecs) list.push(...project.firmwareSpecs);
+  if (project.softwareSpecs) list.push(...project.softwareSpecs);
+  if (project.pcbSpecs) list.push(...project.pcbSpecs);
+  if (project.protocols) list.push(...project.protocols);
+  return list.length > 0 ? list : ['Engineering', 'Embedded', 'Hardware'];
 }
 
 export function CaseStudyModal({ project, onClose }: Props) {
@@ -15,11 +37,11 @@ export function CaseStudyModal({ project, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       {/* Modal Container */}
-      <div className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8">
+      <div className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8">
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               {project.category}
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-0.5">
@@ -40,7 +62,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
         {/* Modal Body */}
         <div className="p-6 max-h-[75vh] overflow-y-auto space-y-6 text-slate-700 dark:text-slate-300">
           {/* Project Diagram / Graphic */}
-          <div className="rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-4 flex items-center justify-center">
+          <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-4 flex items-center justify-center">
             <img
               src={imgSrc}
               alt={project.title}
@@ -49,7 +71,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
           </div>
 
           {/* Quick Meta Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-lg border border-slate-200/60 dark:border-slate-700/60 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-xl border border-slate-200/60 dark:border-slate-700/60 text-sm">
             <div>
               <span className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 block">
                 My Role
@@ -80,17 +102,17 @@ export function CaseStudyModal({ project, onClose }: Props) {
 
           {/* Problem & Solution */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 p-4 rounded-lg">
+            <div className="bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 p-4 rounded-xl">
               <h5 className="text-xs font-bold uppercase text-amber-700 dark:text-amber-400 mb-1">
-                Problem
+                Challenge
               </h5>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-normal">
                 {project.problem || 'Details to be added'}
               </p>
             </div>
-            <div className="bg-teal-50/50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-900/50 p-4 rounded-lg">
-              <h5 className="text-xs font-bold uppercase text-teal-700 dark:text-teal-400 mb-1">
-                Solution
+            <div className="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/50 p-4 rounded-xl">
+              <h5 className="text-xs font-bold uppercase text-blue-700 dark:text-blue-400 mb-1">
+                Architecture &amp; Solution
               </h5>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-normal">
                 {project.solution || 'Details to be added'}
@@ -98,13 +120,13 @@ export function CaseStudyModal({ project, onClose }: Props) {
             </div>
           </div>
 
-          {/* Technical Architecture Breakdown */}
+          {/* Technical Specifications */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Technical Specifications
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                 <span className="font-bold block text-slate-900 dark:text-white mb-1">Hardware</span>
                 <span className="text-slate-600 dark:text-slate-400">
                   {project.hardwareSpecs && project.hardwareSpecs.length > 0
@@ -112,7 +134,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
                     : 'Details to be added'}
                 </span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                 <span className="font-bold block text-slate-900 dark:text-white mb-1">Software / Firmware</span>
                 <span className="text-slate-600 dark:text-slate-400">
                   {project.firmwareSpecs && project.firmwareSpecs.length > 0
@@ -122,7 +144,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
                     : 'Details to be added'}
                 </span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                 <span className="font-bold block text-slate-900 dark:text-white mb-1">PCB / Electronics</span>
                 <span className="text-slate-600 dark:text-slate-400">
                   {project.pcbSpecs && project.pcbSpecs.length > 0
@@ -132,8 +154,8 @@ export function CaseStudyModal({ project, onClose }: Props) {
                     : 'Details to be added'}
                 </span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
-                <span className="font-bold block text-slate-900 dark:text-white mb-1">Protocols & Communication</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+                <span className="font-bold block text-slate-900 dark:text-white mb-1">Protocols &amp; Communication</span>
                 <span className="text-slate-600 dark:text-slate-400">
                   {project.protocols && project.protocols.length > 0
                     ? project.protocols.join(', ')
@@ -149,8 +171,8 @@ export function CaseStudyModal({ project, onClose }: Props) {
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Testing &amp; Validation
               </h4>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 leading-relaxed flex items-start gap-2">
-                <span className="text-teal-500 font-bold mt-0.5">✓</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 leading-relaxed flex items-start gap-2">
+                <span className="text-blue-600 dark:text-blue-400 font-bold mt-0.5">✓</span>
                 <span>{project.testingAndDebugging}</span>
               </div>
             </div>
@@ -165,7 +187,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
               <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
                 {project.results.map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-blue-500 font-bold">●</span>
+                    <span className="text-emerald-500 font-bold">●</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -180,10 +202,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {techList.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="px-2.5 py-1 text-xs font-medium rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-                >
+                <span key={idx} className="tech-tag">
                   {tech}
                 </span>
               ))}
@@ -223,7 +242,7 @@ export function CaseStudyModal({ project, onClose }: Props) {
         <div className="px-6 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-xs font-semibold rounded bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cursor-pointer"
+            className="px-4 py-2 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors cursor-pointer"
           >
             Close Case Study
           </button>

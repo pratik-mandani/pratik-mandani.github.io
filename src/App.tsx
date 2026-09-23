@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Header } from './components/layout/Header';
+import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
-import { About } from './components/sections/About';
-import { JourneyTimeline } from './components/sections/JourneyTimeline';
-import { ProductDevSection } from './components/sections/ProductDevSection';
-import { FeaturedProjects } from './components/sections/FeaturedProjects';
-import { KotlSpotlight } from './components/sections/KotlSpotlight';
-import { WebDevelopment } from './components/sections/WebDevelopment';
-import { SkillsSection } from './components/sections/SkillsSection';
-import { ExperienceSection } from './components/sections/ExperienceSection';
-import { ResumeSection } from './components/sections/ResumeSection';
-import { ContactSection } from './components/sections/ContactSection';
+import { Skills } from './components/sections/Skills';
+import { Products } from './components/sections/Products';
+import { WebPlatforms } from './components/sections/WebPlatforms';
+import { Journey } from './components/sections/Journey';
+import { Experience } from './components/sections/Experience';
+import { Contact } from './components/sections/Contact';
 import { CaseStudyModal } from './components/modals/CaseStudyModal';
 import { projectCaseStudies } from './data/portfolioData';
 import { ProjectCaseStudy } from './types';
@@ -20,7 +16,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectCaseStudy | null>(null);
 
-  // Initialize theme from system or user preference
+  // Initialize theme from user preference or system
   useEffect(() => {
     const isDark = localStorage.getItem('theme') === 'dark';
     setDarkMode(isDark);
@@ -45,39 +41,29 @@ export default function App() {
     });
   }
 
-  // Find KOTL project for the dedicated spotlight
-  const kotlProject = projectCaseStudies.find((p) => p.id === 'kotl-emotional-robot') || projectCaseStudies[0];
-
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors flex flex-col font-sans">
-      {/* Sticky Header */}
-      <Header darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors flex flex-col font-sans">
+      {/* Sticky Navigation Bar with Scroll Progress */}
+      <Navbar darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
 
-      {/* Main Content Area */}
+      {/* Main Content Sections */}
       <main className="flex-1">
         <Hero />
-        <About />
-        <JourneyTimeline />
-        <ProductDevSection />
-        <FeaturedProjects
+        <Skills />
+        <Products
           projects={projectCaseStudies}
-          onSelectProject={(project) => setSelectedProject(project)}
+          onSelectProject={(proj) => setSelectedProject(proj)}
         />
-        <KotlSpotlight
-          kotlProject={kotlProject}
-          onOpenKotlModal={() => setSelectedProject(kotlProject)}
-        />
-        <WebDevelopment />
-        <SkillsSection />
-        <ExperienceSection />
-        <ResumeSection />
-        <ContactSection />
+        <WebPlatforms />
+        <Journey />
+        <Experience />
+        <Contact />
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* Clean Project Detail Modal */}
+      {/* Detail Case Study Modal */}
       <CaseStudyModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
