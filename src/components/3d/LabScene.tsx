@@ -1,4 +1,13 @@
-// Main 3D scene orchestrator — all geometry lives here inside the R3F Canvas
+// Simple, clean, attractive 3D engineering laboratory
+// Contains ONLY the 8 requested elements:
+// 1. One clean lab room
+// 2. One desk
+// 3. One developer sitting/sleeping on the chair
+// 4. One BIG computer monitor (the main attraction)
+// 5. Two small side monitors
+// 6. One electronics workbench with PCB/components
+// 7. One KOTL robot
+// 8. Simple professional lighting
 import { Suspense } from 'react';
 import { Room } from './Room';
 import { LabLighting } from './LabLighting';
@@ -9,8 +18,6 @@ import { CentralMonitor } from './CentralMonitor';
 import { SecondaryMonitors } from './SecondaryMonitors';
 import { ElectronicsBench } from './ElectronicsBench';
 import { KotlRobot } from './KotlRobot';
-import { CareerWall } from './CareerWall';
-import { ProjectPanels } from './ProjectPanels';
 import { useLab } from '../../context/LabContext';
 import { CAMERA_POSITIONS } from '../../scenes/cameraPositions';
 
@@ -18,7 +25,7 @@ function SceneFallback() {
   return (
     <mesh position={[0, 1, 0]}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#0e1218" />
+      <meshStandardMaterial color="#161c26" />
     </mesh>
   );
 }
@@ -38,8 +45,6 @@ export function LabScene() {
       <SecondaryMonitors />
       <ElectronicsBench />
       <KotlRobot />
-      <CareerWall />
-      <ProjectPanels />
     </Suspense>
   );
 }

@@ -1,49 +1,49 @@
 import { SectionId, CameraPosition } from '../context/LabContext';
 
 export const CAMERA_POSITIONS: Record<SectionId, CameraPosition> = {
-  // Cinematic medium-wide shot framing the developer, main monitor, secondary screens, and workbench together
+  // Clear, premium shot where the BIG monitor is the main attraction, developer is relaxing, and workbench is visible
   home: {
-    position: [0, 2.0, 3.8],
+    position: [0, 1.85, 3.4],
     lookAt: [0, 1.35, -0.6],
   },
-  // Focused on the back wall career installation
+  // Focused on journey timeline
   journey: {
-    position: [0, 2.3, 1.2],
-    lookAt: [0, 2.2, -2.9],
+    position: [0, 1.85, 2.6],
+    lookAt: [0, 1.4, -0.6],
   },
-  // Tight angled shot of the electronics workbench and instruments
+  // Tight shot of the electronics workbench and instruments
   hardware: {
-    position: [-1.9, 1.45, 0.4],
-    lookAt: [-2.4, 0.95, -1.0],
+    position: [-1.8, 1.4, 0.4],
+    lookAt: [-2.2, 0.95, -0.9],
   },
   // Intimate close-up on KOTL robot on the workbench
   kotl: {
-    position: [-1.8, 1.35, 0.1],
-    lookAt: [-2.2, 1.05, -0.9],
+    position: [-1.75, 1.3, 0.2],
+    lookAt: [-2.15, 1.0, -0.75],
   },
-  // Angled view focused on projects system display on the right
+  // Focused on projects system display on the right
   projects: {
-    position: [1.4, 1.8, 0.9],
-    lookAt: [2.0, 1.4, -0.8],
+    position: [0, 1.85, 2.8],
+    lookAt: [0, 1.4, -0.6],
   },
   // Workstation view with experience terminal
   experience: {
-    position: [-0.6, 1.9, 2.6],
-    lookAt: [-0.3, 1.4, -0.6],
+    position: [-0.4, 1.85, 2.6],
+    lookAt: [0, 1.4, -0.6],
   },
   // Workstation view with resume terminal
   resume: {
-    position: [0, 1.9, 2.8],
+    position: [0, 1.85, 2.8],
     lookAt: [0, 1.4, -0.6],
   },
   // Workstation view with contact terminal
   contact: {
-    position: [0.6, 1.9, 2.6],
-    lookAt: [0.3, 1.4, -0.6],
+    position: [0.4, 1.85, 2.6],
+    lookAt: [0, 1.4, -0.6],
   },
 };
 
 export const INTRO_CAMERA: CameraPosition = {
-  position: [0, 2.8, 6.2],
-  lookAt: [0, 1.4, -0.6],
+  position: [0, 1.85, 3.4],
+  lookAt: [0, 1.35, -0.6],
 };
