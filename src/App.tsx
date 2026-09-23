@@ -1,80 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Journey } from './components/Journey';
-import { ProductHardware } from './components/ProductHardware';
-import { EmbeddedFirmware } from './components/EmbeddedFirmware';
-import { WebFullStack } from './components/WebFullStack';
-import { KotlSpotlight } from './components/KotlSpotlight';
-import { FeaturedProjects } from './components/FeaturedProjects';
-import { Skills } from './components/Skills';
-import { ExperienceEducation } from './components/ExperienceEducation';
-import { ResumeSection } from './components/ResumeSection';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+// Main App — orchestrates Canvas, UI overlays, and mobile layout
+import { useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { LabProvider } from './context/LabContext';
+import { LabScene } from './components/3d/LabScene';
+import { IntroScreen } from './components/ui/IntroScreen';
+import { NavOverlay } from './components/ui/NavOverlay';
+import { SectionPanel } from './components/ui/SectionPanel';
+import { CaseStudyModal } from './components/ui/CaseStudyModal';
+import { MobileLabLayout } from './components/ui/MobileLabLayout';
+import { useIsMobile } from './hooks/useIsMobile';
 
-export const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('hero');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        'hero',
-        'about',
-        'journey',
-        'hardware',
-        'embedded',
-        'fullstack',
-        'projects',
-        'kotl',
-        'skills',
-        'experience',
-        'resume',
-        'contact',
-      ];
-
-      const scrollPosition = window.scrollY + 250;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+function DesktopLab() {
+  const [introVisible, setIntroVisible] = useState(true);
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-slate-100 flex flex-col font-sans selection:bg-amber-500/20 selection:text-amber-300">
-      <Navbar activeSection={activeSection} />
-      
-      <main className="flex-grow">
-        <Hero />
-        <About />
-        <Journey />
-        <ProductHardware />
-        <EmbeddedFirmware />
-        <WebFullStack />
-        <FeaturedProjects />
-        <KotlSpotlight />
-        <Skills />
-        <ExperienceEducation />
-        <ResumeSection />
-        <Contact />
-      </main>
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', background: '#020610' }}>
+      {/* R3F Canvas — full screen 3D scene */}
+      <Canvas
+        camera={{ position: [0, 5.5, 16], fov: 55, near: 0.1, far: 100 }}
+        style={{ position: 'fixed', inset: 0, zIndex: 1 }}
+        gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
+        shadows={false}
+        dpr={[1, 1.5]}
+      >
+        <LabScene />
+      </Canvas>
 
-      <Footer />
+      {/* 2D UI overlays — rendered above Canvas */}
+      {!introVisible && (
+        <>
+          <NavOverlay />
+          <SectionPanel />
+          <CaseStudyModal />
+        </>
+      )}
+
+      {/* Intro — rendered above everything */}
+      {introVisible && (
+        <IntroScreen onComplete={() => setIntroVisible(false)} />
+      )}
     </div>
   );
-};
+}
 
-export default App;
+export default function App() {
+  const isMobile = useIsMobile();
+
+  return (
+    <LabProvider>
+      {isMobile ? <MobileLabLayout /> : <DesktopLab />}
+    </LabProvider>
+  );
+}
