@@ -4,7 +4,7 @@ const TITLES = [
   'Embedded & Firmware Engineer',
   'Product Development Engineer',
   'Full-Stack Developer (Laravel & PHP)',
-  'Industrial Automation & QA Specialist',
+  'QA / QC & Hardware Diagnostics Specialist',
 ];
 
 const STATS = [

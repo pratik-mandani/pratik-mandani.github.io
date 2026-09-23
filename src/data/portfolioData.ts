@@ -20,7 +20,7 @@ export const personalInfo = {
   linkedin: 'https://linkedin.com/in/pratik-mandani-placeholder',
   linkedinIsPlaceholder: true,
   resumeUrl: '/resume/Pratik_Mandani.pdf',
-  positioning: 'Embedded & Product Development Engineer | Electronics | Firmware | Industrial Automation | Full-Stack Web Development',
+  positioning: 'Embedded & Product Development Engineer | Electronics | Firmware | QA / QC | Full-Stack Web Development',
   summary: `Results-driven Product Development & Embedded Quality Engineer combining 7+ years of hands-on industrial product testing, hardware prototyping, PCB validation, and rigorous QA/QC workflows with 4+ years of full-stack web software engineering (PHP, Laravel, MySQL, REST APIs). Proven track record in component-level troubleshooting, precision SMD rework, and cross-functional integration spanning PLC, Raspberry Pi, embedded controllers, and scalable enterprise web systems.`,
   differentiators: [
     {

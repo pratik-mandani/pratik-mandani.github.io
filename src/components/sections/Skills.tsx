@@ -64,12 +64,12 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     items: ['Laravel MVC', 'MySQL Relational Schema', 'Database Indexing & Tuning', 'RESTful API Architecture', 'Admin Portals & ERPs', 'Blade Templating', 'Bootstrap', 'Tailwind CSS'],
   },
   {
-    label: 'Industrial Automation & Vending',
+    label: 'QA / QC & Vending Systems',
     icon: '🏭',
     accent: '#4f46e5',
     level: 'Expert',
     context: ['Commercial machines', '200+ Units sprint'],
-    description: 'Smart machines & automated dispensing',
+    description: 'Machine testing & automated dispensing',
     items: ['Unattended QR Vending', 'Coin Mechanism Interface', 'Bill Acceptors', 'Optical Drop Detection', 'Spiral Motor Actuation', 'Relay Drivers', 'Stage-Gate Manufacturing'],
   },
   {
