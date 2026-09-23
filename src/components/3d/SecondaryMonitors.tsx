@@ -1,56 +1,56 @@
 // Purposeful secondary monitors flanking the main display
-// Left: Pratik's Engineering Identity & Competencies
-// Right: AI System Pipeline & Verified Systems
-// No meaningless random terminal gibberish — clear, readable, narrative data
+// Left: PRATIK // ENGINEER (Product Development, Electronics, Embedded, Firmware, Full-Stack, 7+ Years, 100+ Web Projects)
+// Right: AI SYSTEM // ACTIVE (Product Development ✓, PCB Development ✓, Vending R&D ✓, Laravel ✓, Embedded ✓, CURRENT TASK: KOTL PROJECT)
 import { Html } from '@react-three/drei';
 
 function LeftIdentityContent() {
   return (
     <div
       style={{
-        width: '320px',
-        height: '240px',
-        background: 'linear-gradient(180deg, #040913 0%, #03070f 100%)',
-        border: '1px solid #1e3a5f',
-        borderRadius: '5px',
+        width: '340px',
+        height: '255px',
+        background: 'linear-gradient(180deg, #071224 0%, #030814 100%)',
+        border: '2px solid #0284c7',
+        borderRadius: '6px',
         fontFamily: '"JetBrains Mono", "Courier New", monospace',
-        color: '#e2e8f0',
-        padding: '14px 16px',
+        color: '#f8fafc',
+        padding: '16px 18px',
         boxSizing: 'border-box',
         overflow: 'hidden',
         userSelect: 'none',
         pointerEvents: 'none',
+        boxShadow: '0 0 25px rgba(56,189,248,0.18)',
       }}
     >
-      <div style={{ borderBottom: '1px solid #1e2e46', paddingBottom: '6px', marginBottom: '10px' }}>
-        <div style={{ color: '#38bdf8', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px' }}>
+      <div style={{ borderBottom: '2px solid #1e3a5f', paddingBottom: '8px', marginBottom: '12px' }}>
+        <div style={{ color: '#38bdf8', fontSize: '14px', fontWeight: 900, letterSpacing: '2px' }}>
           PRATIK // ENGINEER
-        </div>
-        <div style={{ color: '#64748b', fontSize: '8px', letterSpacing: '1px' }}>
-          CORE COMPETENCIES & DOMAINS
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '14px' }}>
         {[
-          { label: 'Product Development', tag: '7+ Yrs' },
-          { label: 'Electronics & QA/QC', tag: 'Benchtop' },
-          { label: 'Embedded Systems', tag: 'ESP32/C++' },
-          { label: 'Firmware Architecture', tag: 'RTOS' },
-          { label: 'Full-Stack Web Dev', tag: 'Altius Infoway' },
-        ].map(({ label, tag }) => (
-          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '10px' }}>
-            <span style={{ color: '#f1f5f9', fontWeight: 600 }}>{label}</span>
-            <span style={{ color: '#38bdf8', fontSize: '8px', background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.2)', padding: '1px 5px', borderRadius: '2px' }}>
-              {tag}
-            </span>
+          'Product Development',
+          'Electronics',
+          'Embedded',
+          'Firmware',
+          'Full-Stack',
+        ].map((domain) => (
+          <div key={domain} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontWeight: 700, color: '#e2e8f0' }}>
+            <span style={{ color: '#38bdf8' }}>◈</span>
+            <span>{domain}</span>
           </div>
         ))}
       </div>
 
-      <div style={{ borderTop: '1px solid #162438', paddingTop: '6px', display: 'flex', justifyContent: 'space-between', fontSize: '8px', color: '#64748b' }}>
-        <span>LOC: RAJKOT, GUJARAT</span>
-        <span style={{ color: '#22c55e' }}>● STATUS: READY</span>
+      {/* Verified Experience Badges */}
+      <div style={{ borderTop: '1px solid #1e2e46', paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        <div style={{ color: '#38bdf8', fontSize: '11px', fontWeight: 900, letterSpacing: '1px' }}>
+          7+ YEARS EXPERIENCE
+        </div>
+        <div style={{ color: '#4ade80', fontSize: '10px', fontWeight: 800, letterSpacing: '1px' }}>
+          100+ WEB PROJECTS
+        </div>
       </div>
     </div>
   );
@@ -60,54 +60,49 @@ function RightPipelineContent() {
   return (
     <div
       style={{
-        width: '320px',
-        height: '240px',
-        background: 'linear-gradient(180deg, #040913 0%, #03070f 100%)',
-        border: '1px solid #2e1e5f',
-        borderRadius: '5px',
+        width: '340px',
+        height: '255px',
+        background: 'linear-gradient(180deg, #09091f 0%, #040412 100%)',
+        border: '2px solid #7c3aed',
+        borderRadius: '6px',
         fontFamily: '"JetBrains Mono", "Courier New", monospace',
-        color: '#e2e8f0',
-        padding: '14px 16px',
+        color: '#f8fafc',
+        padding: '16px 18px',
         boxSizing: 'border-box',
         overflow: 'hidden',
         userSelect: 'none',
         pointerEvents: 'none',
+        boxShadow: '0 0 25px rgba(167,139,250,0.22)',
       }}
     >
-      <div style={{ borderBottom: '1px solid #2e1e5f', paddingBottom: '6px', marginBottom: '8px' }}>
-        <div style={{ color: '#a78bfa', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px' }}>
-          AI SYSTEM PIPELINE
-        </div>
-        <div style={{ color: '#64748b', fontSize: '8px', letterSpacing: '1px' }}>
-          VERIFIED SUBSYSTEMS
+      <div style={{ borderBottom: '2px solid #3b2075', paddingBottom: '8px', marginBottom: '12px' }}>
+        <div style={{ color: '#c084fc', fontSize: '14px', fontWeight: 900, letterSpacing: '2px' }}>
+          AI SYSTEM // ACTIVE
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '8px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '14px' }}>
         {[
-          { label: 'Product Development', ok: true },
-          { label: 'PCB Development', ok: true },
-          { label: 'Vending R&D', ok: true },
-          { label: 'Laravel & SQL', ok: true },
-          { label: 'Embedded Firmware', ok: true },
-        ].map(({ label, ok }) => (
-          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '9.5px' }}>
-            <span style={{ color: '#cbd5e1' }}>{label}</span>
-            <span style={{ color: '#4ade80', fontWeight: 700 }}>✓</span>
+          'Product Development',
+          'PCB Development',
+          'Vending R&D',
+          'Laravel',
+          'Embedded',
+        ].map((subsystem) => (
+          <div key={subsystem} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', fontWeight: 700 }}>
+            <span style={{ color: '#e2e8f0' }}>{subsystem}</span>
+            <span style={{ color: '#4ade80', fontWeight: 900, fontSize: '13px' }}>✓</span>
           </div>
         ))}
       </div>
 
-      {/* Next focus box */}
-      <div style={{ background: '#09081a', border: '1px solid #3b2075', borderRadius: '3px', padding: '6px 8px' }}>
-        <div style={{ color: '#fbbf24', fontSize: '8px', fontWeight: 700, letterSpacing: '1px' }}>
-          NEXT OBJECTIVE:
+      {/* Current Task Box */}
+      <div style={{ background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.35)', borderRadius: '4px', padding: '6px 10px' }}>
+        <div style={{ color: '#fbbf24', fontSize: '9px', fontWeight: 800, letterSpacing: '1.5px' }}>
+          CURRENT TASK:
         </div>
-        <div style={{ color: '#f8fafc', fontSize: '10px', fontWeight: 700, marginTop: '1px' }}>
-          KOTL ROBOT PLATFORM
-        </div>
-        <div style={{ color: '#94a3b8', fontSize: '7.5px' }}>
-          Autonomous sensory states & FreeRTOS routines
+        <div style={{ color: '#ffffff', fontSize: '12px', fontWeight: 900, letterSpacing: '1px', marginTop: '1px' }}>
+          KOTL PROJECT
         </div>
       </div>
     </div>
@@ -126,36 +121,36 @@ function MonitorFrame({ position, rotation, accentColor, children }: MonitorFram
     <group position={position} rotation={rotation}>
       {/* Sleek aluminum monitor bezel */}
       <mesh castShadow receiveShadow>
-        <boxGeometry args={[0.98, 0.74, 0.035]} />
+        <boxGeometry args={[1.05, 0.8, 0.04]} />
         <meshStandardMaterial
-          color="#121824"
-          metalness={0.85}
+          color="#161e2c"
+          metalness={0.88}
           roughness={0.25}
         />
       </mesh>
 
       {/* Screen panel glass */}
-      <mesh position={[0, 0, 0.018]}>
-        <planeGeometry args={[0.94, 0.7]} />
+      <mesh position={[0, 0, 0.021]}>
+        <planeGeometry args={[1.01, 0.76]} />
         <meshStandardMaterial
-          color="#030812"
+          color="#040814"
           roughness={0.2}
           emissive={accentColor}
-          emissiveIntensity={0.12}
+          emissiveIntensity={0.2}
         />
       </mesh>
 
       {/* Power LED */}
-      <mesh position={[0.44, -0.34, 0.019]}>
-        <sphereGeometry args={[0.005, 6, 6]} />
-        <meshStandardMaterial color={accentColor} emissive={accentColor} emissiveIntensity={3} />
+      <mesh position={[0.47, -0.37, 0.022]}>
+        <sphereGeometry args={[0.006, 6, 6]} />
+        <meshStandardMaterial color={accentColor} emissive={accentColor} emissiveIntensity={4} />
       </mesh>
 
-      {/* HTML Content */}
+      {/* HTML Content Overlay */}
       <Html
         transform
-        position={[0, 0, 0.021]}
-        distanceFactor={0.82}
+        position={[0, 0, 0.024]}
+        distanceFactor={0.78}
         occlude={false}
         style={{ pointerEvents: 'none' }}
       >
@@ -168,20 +163,20 @@ function MonitorFrame({ position, rotation, accentColor, children }: MonitorFram
 export function SecondaryMonitors() {
   return (
     <>
-      {/* Left Screen: Pratik's Identity & Core Competencies, angled inward */}
+      {/* Left Screen: PRATIK // ENGINEER, angled inward */}
       <MonitorFrame
-        position={[-1.38, 1.45, -0.68]}
+        position={[-1.42, 1.45, -0.66]}
         rotation={[0, 0.38, 0]}
         accentColor="#38bdf8"
       >
         <LeftIdentityContent />
       </MonitorFrame>
 
-      {/* Right Screen: AI Pipeline & Status, angled inward */}
+      {/* Right Screen: AI SYSTEM // ACTIVE, angled inward */}
       <MonitorFrame
-        position={[1.38, 1.45, -0.68]}
+        position={[1.42, 1.45, -0.66]}
         rotation={[0, -0.38, 0]}
-        accentColor="#a78bfa"
+        accentColor="#c084fc"
       >
         <RightPipelineContent />
       </MonitorFrame>

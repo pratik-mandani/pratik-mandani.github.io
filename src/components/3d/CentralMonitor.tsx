@@ -1,5 +1,5 @@
-// Dominant Central Monitor — The Heart of the Engineering Lab
-// Displays the AI Development System narrative, build progress, and station navigation
+// Dominant Central Monitor — The Visual Hero of the Engineering Lab
+// Displays a large, crystal-clear, bright AI Development Dashboard readable from initial camera
 import { useState } from 'react';
 import { Html } from '@react-three/drei';
 import { useLab, SectionId } from '../../context/LabContext';
@@ -24,83 +24,101 @@ function MonitorDisplay() {
   return (
     <div
       style={{
-        width: '640px',
-        height: '370px',
-        background: 'linear-gradient(180deg, #040913 0%, #02060d 100%)',
-        border: '1px solid #1e3a5f',
-        borderRadius: '6px',
+        width: '740px',
+        height: '430px',
+        background: 'linear-gradient(180deg, #071224 0%, #030814 100%)',
+        border: '2px solid #0284c7',
+        borderRadius: '8px',
         fontFamily: '"JetBrains Mono", "Courier New", monospace',
-        color: '#e2e8f0',
-        padding: '16px 22px',
+        color: '#f8fafc',
+        padding: '20px 26px',
         boxSizing: 'border-box',
         overflow: 'hidden',
         userSelect: 'none',
         pointerEvents: 'auto',
         position: 'relative',
-        boxShadow: 'inset 0 0 50px rgba(56,189,248,0.08)',
+        boxShadow: '0 0 45px rgba(56,189,248,0.22), inset 0 0 50px rgba(56,189,248,0.08)',
       }}
     >
       {/* Top Header Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #1e2e46', paddingBottom: '10px', marginBottom: '12px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #1e3a5f', paddingBottom: '12px', marginBottom: '16px' }}>
         <div>
-          <div style={{ color: '#38bdf8', fontSize: '14px', fontWeight: 800, letterSpacing: '2.5px' }}>
+          <div style={{ color: '#38bdf8', fontSize: '18px', fontWeight: 900, letterSpacing: '3px', textShadow: '0 0 16px rgba(56,189,248,0.6)' }}>
             PRATIK // ENGINEERING LAB
           </div>
-          <div style={{ color: '#64748b', fontSize: '10px', letterSpacing: '1.5px', marginTop: '2px' }}>
+          <div style={{ color: '#94a3b8', fontSize: '11px', fontWeight: 600, letterSpacing: '2px', marginTop: '3px' }}>
             AI DEVELOPMENT SYSTEM
           </div>
         </div>
-        <div style={{ textAlign: 'right' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', padding: '3px 8px', borderRadius: '3px' }}>
-            <span style={{ width: '6px', height: '6px', background: '#22c55e', borderRadius: '50%', boxShadow: '0 0 6px #22c55e' }} />
-            <span style={{ color: '#4ade80', fontSize: '9px', fontWeight: 700, letterSpacing: '1px' }}>AI ACTIVE</span>
+        <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.18)', border: '1px solid #22c55e', padding: '4px 10px', borderRadius: '4px' }}>
+            <span style={{ width: '8px', height: '8px', background: '#22c55e', borderRadius: '50%', boxShadow: '0 0 10px #22c55e' }} />
+            <span style={{ color: '#4ade80', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px' }}>AI STATUS: ACTIVE</span>
           </div>
-          <div style={{ color: '#475569', fontSize: '8px', marginTop: '3px' }}>SYS_CORE: ONLINE</div>
+          <div style={{ color: '#64748b', fontSize: '9px', letterSpacing: '1px' }}>CORE_V2.9 // AUTONOMOUS_MODE</div>
         </div>
       </div>
 
-      {/* Main Narrative Block */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '16px', marginBottom: '12px' }}>
-        {/* Left Column: Current Project & Progress */}
+      {/* Main Dashboard Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.18fr 0.82fr', gap: '20px', marginBottom: '16px' }}>
+        {/* Left Column: Project, Progress & Current Task */}
         <div>
-          <div style={{ color: '#94a3b8', fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase' }}>
-            CURRENT PROJECT:
+          <div style={{ color: '#38bdf8', fontSize: '10px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+            CURRENT PROJECT
           </div>
-          <div style={{ color: '#f8fafc', fontSize: '15px', fontWeight: 700, letterSpacing: '0.5px', marginTop: '2px', marginBottom: '10px' }}>
+          <div style={{ color: '#ffffff', fontSize: '18px', fontWeight: 900, letterSpacing: '1px', marginTop: '2px', marginBottom: '14px', textShadow: '0 0 10px rgba(255,255,255,0.2)' }}>
             PERSONAL PORTFOLIO
           </div>
 
           {/* Development Progress Bar */}
-          <div style={{ marginBottom: '8px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', marginBottom: '4px' }}>
-              <span style={{ color: '#38bdf8', fontWeight: 600 }}>DEVELOPMENT:</span>
-              <span style={{ color: '#38bdf8', fontWeight: 800 }}>91%</span>
+          <div style={{ marginBottom: '14px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontWeight: 800, marginBottom: '6px' }}>
+              <span style={{ color: '#7dd3fc', letterSpacing: '1px' }}>DEVELOPMENT PROGRESS</span>
+              <span style={{ color: '#38bdf8', fontSize: '13px' }}>91%</span>
             </div>
-            {/* Visual block progress matching user specification */}
-            <div style={{ color: '#38bdf8', fontSize: '11px', letterSpacing: '1px', fontFamily: 'monospace' }}>
+            {/* Visual block progress string matching exact prompt */}
+            <div style={{
+              background: '#040d1c',
+              border: '1px solid #0284c7',
+              padding: '6px 10px',
+              borderRadius: '4px',
+              color: '#38bdf8',
+              fontSize: '14px',
+              fontWeight: 800,
+              letterSpacing: '2px',
+              boxShadow: '0 0 15px rgba(2,132,199,0.3)',
+            }}>
               ██████████████████░░ 91%
             </div>
-            <div style={{ color: '#475569', fontSize: '8px', marginTop: '4px', fontStyle: 'italic' }}>
-              "The engineer thinks. The AI executes."
+          </div>
+
+          {/* Current Autonomous Task */}
+          <div style={{ background: 'rgba(56,189,248,0.06)', border: '1px solid rgba(56,189,248,0.25)', borderRadius: '4px', padding: '8px 12px' }}>
+            <div style={{ color: '#94a3b8', fontSize: '9px', fontWeight: 700, letterSpacing: '1.5px' }}>
+              CURRENT TASK:
+            </div>
+            <div style={{ color: '#f0f9ff', fontSize: '12px', fontWeight: 700, marginTop: '2px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#38bdf8' }}>▶</span> Integrating engineering projects...
             </div>
           </div>
         </div>
 
         {/* Right Column: AI Checklist */}
-        <div style={{ background: '#070e1b', border: '1px solid #162438', borderRadius: '4px', padding: '10px 12px' }}>
-          <div style={{ color: '#38bdf8', fontSize: '9px', fontWeight: 700, letterSpacing: '1px', marginBottom: '6px' }}>
-            AI STATUS: ACTIVE
+        <div style={{ background: '#051020', border: '1px solid #1e3a5f', borderRadius: '6px', padding: '12px 16px' }}>
+          <div style={{ color: '#38bdf8', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px', marginBottom: '10px', borderBottom: '1px solid #162a48', paddingBottom: '6px' }}>
+            SUBSYSTEM CHECKLIST
           </div>
           {[
             { label: 'Architecture', done: true },
+            { label: 'UI System', done: true },
             { label: '3D Environment', done: true },
             { label: 'Project Integration', done: true },
-            { label: 'Portfolio System', done: true },
+            { label: 'Portfolio Content', done: true },
             { label: 'Optimization', done: false, pending: '...' },
           ].map(({ label, done, pending }) => (
-            <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '9px', marginBottom: '3.5px' }}>
-              <span style={{ color: done ? '#cbd5e1' : '#64748b' }}>{label}</span>
-              <span style={{ color: done ? '#22c55e' : '#fbbf24', fontWeight: 700 }}>
+            <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', marginBottom: '5px' }}>
+              <span style={{ color: done ? '#e2e8f0' : '#94a3b8', fontWeight: done ? 600 : 400 }}>{label}</span>
+              <span style={{ color: done ? '#22c55e' : '#fbbf24', fontWeight: 900, fontSize: done ? '13px' : '11px' }}>
                 {done ? '✓' : pending}
               </span>
             </div>
@@ -108,31 +126,32 @@ function MonitorDisplay() {
         </div>
       </div>
 
-      {/* Prominent [ ENTER LAB ] and Station Navigation */}
-      <div style={{ borderTop: '1px solid #1e2e46', paddingTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        {/* Prominent ENTER LAB button */}
+      {/* Prominent Action Bar */}
+      <div style={{ borderTop: '2px solid #1e3a5f', paddingTop: '12px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Visual Hero [ ENTER LAB ] Button */}
         <button
           onClick={handleEnterLab}
           style={{
             background: 'linear-gradient(90deg, #0284c7 0%, #0369a1 100%)',
-            border: '1px solid #38bdf8',
-            color: '#f0f9ff',
-            padding: '8px 16px',
-            fontSize: '10px',
-            fontWeight: 800,
-            letterSpacing: '2px',
+            border: '2px solid #38bdf8',
+            color: '#ffffff',
+            padding: '10px 22px',
+            fontSize: '12px',
+            fontWeight: 900,
+            letterSpacing: '2.5px',
             cursor: 'pointer',
-            borderRadius: '3px',
+            borderRadius: '4px',
             fontFamily: 'inherit',
-            boxShadow: '0 0 12px rgba(56,189,248,0.4)',
+            boxShadow: '0 0 20px rgba(56,189,248,0.5)',
             whiteSpace: 'nowrap',
+            transition: 'all 0.15s ease',
           }}
         >
           [ ENTER LAB ]
         </button>
 
-        {/* Direct Station Links */}
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', flex: 1 }}>
+        {/* Physical Station Quick Links */}
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', flex: 1 }}>
           {[
             { id: 'hardware' as SectionId, label: '⬡ WORKBENCH' },
             { id: 'kotl' as SectionId, label: '◈ KOTL' },
@@ -149,13 +168,13 @@ function MonitorDisplay() {
                 onMouseEnter={() => setHoveredBtn(id)}
                 onMouseLeave={() => setHoveredBtn(null)}
                 style={{
-                  background: isActive ? '#0369a1' : isHovered ? '#0c4a6e' : '#081426',
-                  border: `1px solid ${isActive ? '#38bdf8' : isHovered ? '#0284c7' : '#1e3a5f'}`,
+                  background: isActive ? '#0369a1' : isHovered ? '#0c4a6e' : '#08172c',
+                  border: `1px solid ${isActive ? '#38bdf8' : isHovered ? '#38bdf8' : '#1e3a5f'}`,
                   borderRadius: '3px',
-                  color: isActive || isHovered ? '#f0f9ff' : '#94a3b8',
-                  padding: '6px 10px',
-                  fontSize: '8.5px',
-                  fontWeight: 700,
+                  color: isActive || isHovered ? '#ffffff' : '#94a3b8',
+                  padding: '7px 12px',
+                  fontSize: '9.5px',
+                  fontWeight: 800,
                   letterSpacing: '1px',
                   cursor: 'pointer',
                   fontFamily: 'inherit',
@@ -177,9 +196,9 @@ export function CentralMonitor() {
     <group position={[0, 1.45, -0.76]}>
       {/* Heavy-duty monitor chassis with realistic depth */}
       <mesh castShadow receiveShadow>
-        <boxGeometry args={[1.92, 1.12, 0.05]} />
+        <boxGeometry args={[1.98, 1.16, 0.05]} />
         <meshStandardMaterial
-          color="#121824"
+          color="#161e2c"
           metalness={0.88}
           roughness={0.25}
         />
@@ -187,37 +206,37 @@ export function CentralMonitor() {
 
       {/* Screen inner bezel edge */}
       <mesh position={[0, 0, 0.026]}>
-        <boxGeometry args={[1.88, 1.08, 0.005]} />
-        <meshStandardMaterial color="#080c14" roughness={0.9} />
+        <boxGeometry args={[1.94, 1.12, 0.005]} />
+        <meshStandardMaterial color="#080e18" roughness={0.9} />
       </mesh>
 
-      {/* Screen panel glass with subtle blue-black depth */}
+      {/* Glowing monitor glass with bright cyan backlight reflection */}
       <mesh position={[0, 0, 0.029]}>
-        <planeGeometry args={[1.86, 1.06]} />
+        <planeGeometry args={[1.92, 1.1]} />
         <meshStandardMaterial
-          color="#030812"
-          roughness={0.2}
+          color="#061224"
+          roughness={0.15}
           metalness={0.1}
-          emissive="#08182b"
-          emissiveIntensity={0.4}
+          emissive="#0a2544"
+          emissiveIntensity={0.6}
         />
       </mesh>
 
       {/* Power LED indicator */}
-      <mesh position={[0.88, -0.525, 0.028]}>
-        <sphereGeometry args={[0.006, 8, 8]} />
+      <mesh position={[0.91, -0.54, 0.028]}>
+        <sphereGeometry args={[0.007, 8, 8]} />
         <meshStandardMaterial
           color="#38bdf8"
           emissive="#38bdf8"
-          emissiveIntensity={4}
+          emissiveIntensity={5}
         />
       </mesh>
 
-      {/* HTML Content Overlay */}
+      {/* HTML Content Overlay — tuned distanceFactor for maximum legibility */}
       <Html
         transform
-        position={[0, 0.01, 0.032]}
-        distanceFactor={1.38}
+        position={[0, 0.01, 0.033]}
+        distanceFactor={1.32}
         occlude={false}
         style={{ pointerEvents: 'auto' }}
       >

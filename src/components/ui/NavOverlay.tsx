@@ -1,54 +1,55 @@
-// Always-visible navigation overlay — persistent HUD on top of 3D scene
+// Minimalist HUD overlay — replaces the standard website navbar with a subtle [ LAB CONTROL ] system menu
+// The primary navigation is inside the 3D scene (central monitor & physical lab objects)
 import { useState } from 'react';
 import { useLab, SectionId } from '../../context/LabContext';
 
 interface NavItem {
   id: SectionId;
   label: string;
-  shortcut?: string;
+  icon: string;
 }
 
-const NAV: NavItem[] = [
-  { id: 'home', label: 'Lab Home' },
-  { id: 'journey', label: 'Journey' },
-  { id: 'hardware', label: 'Hardware' },
-  { id: 'kotl', label: 'KOTL' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'resume', label: 'Resume' },
-  { id: 'contact', label: 'Contact' },
+const STATIONS: NavItem[] = [
+  { id: 'home', label: 'Workstation (Home)', icon: '◈' },
+  { id: 'hardware', label: 'Electronics Workbench', icon: '⬡' },
+  { id: 'kotl', label: 'KOTL Robot Prototype', icon: '🤖' },
+  { id: 'journey', label: 'Career Journey Wall', icon: '▶' },
+  { id: 'projects', label: 'Web Platform Archive', icon: '◉' },
+  { id: 'experience', label: 'Work Experience', icon: '◇' },
+  { id: 'resume', label: 'Resume / CV', icon: '↓' },
+  { id: 'contact', label: 'Contact Station', icon: '✉' },
 ];
 
 export function NavOverlay() {
   const { state, dispatch } = useLab();
-  const [expanded, setExpanded] = useState(false);
+  const [open, setOpen] = useState(false);
 
   function navigate(id: SectionId) {
     dispatch({ type: 'NAVIGATE', section: id });
     if (['resume', 'contact', 'experience', 'journey', 'hardware', 'projects'].includes(id)) {
       dispatch({ type: 'OPEN_PANEL', panel: id });
     }
-    setExpanded(false);
+    setOpen(false);
   }
 
   return (
     <>
-      {/* Top-left lab badge */}
+      {/* Top-left subtle lab badge */}
       <div
         style={{
           position: 'fixed',
-          top: 16,
-          left: 16,
+          top: 18,
+          left: 20,
           zIndex: 50,
-          fontFamily: '"Courier New", monospace',
+          fontFamily: '"JetBrains Mono", monospace',
           pointerEvents: 'none',
         }}
       >
-        <div style={{ color: '#38bdf8', fontSize: 10, letterSpacing: 3, fontWeight: 700 }}>
-          ENGINEERING LAB
-        </div>
-        <div style={{ color: '#1e5a9a', fontSize: 8, letterSpacing: 2 }}>
+        <div style={{ color: '#38bdf8', fontSize: 11, letterSpacing: 3, fontWeight: 800 }}>
           PRATIK MANDANI
+        </div>
+        <div style={{ color: '#64748b', fontSize: 9, letterSpacing: 1.5, marginTop: 2 }}>
+          THE ENGINEERING LAB
         </div>
       </div>
 
@@ -56,123 +57,136 @@ export function NavOverlay() {
       <div
         style={{
           position: 'fixed',
-          top: 16,
-          right: 16,
+          top: 18,
+          right: 20,
           zIndex: 50,
-          fontFamily: '"Courier New", monospace',
+          fontFamily: '"JetBrains Mono", monospace',
           textAlign: 'right',
           pointerEvents: 'none',
         }}
       >
-        <div style={{ color: '#4ade80', fontSize: 8, letterSpacing: 2 }}>● SYS:ONLINE</div>
-        <div style={{ color: '#1e5a9a', fontSize: 7, marginTop: 2 }}>
+        <div style={{ color: '#4ade80', fontSize: 9, fontWeight: 700, letterSpacing: 1.5 }}>
+          ● SYS:ONLINE
+        </div>
+        <div style={{ color: '#64748b', fontSize: 8, marginTop: 2, letterSpacing: 1 }}>
           {state.currentSection.toUpperCase()}_VIEW
         </div>
       </div>
 
-      {/* Bottom navigation bar */}
-      <nav
+      {/* Floating [ LAB CONTROL ] System Menu — Subtle & Non-Intrusive */}
+      <div
         style={{
           position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          background: 'rgba(3, 9, 18, 0.92)',
-          borderTop: '1px solid #0e3060',
-          backdropFilter: 'blur(8px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 0,
-          padding: '0 16px',
-          height: 44,
+          bottom: 20,
+          right: 20,
+          zIndex: 60,
+          fontFamily: '"JetBrains Mono", monospace',
         }}
       >
-        {NAV.map((item, i) => (
-          <button
-            key={item.id}
-            onClick={() => navigate(item.id)}
+        {/* Expanded System Drawer */}
+        {open && (
+          <div
             style={{
-              background: state.currentSection === item.id ? 'rgba(56,189,248,0.08)' : 'transparent',
-              border: 'none',
-              borderTop: state.currentSection === item.id ? '2px solid #38bdf8' : '2px solid transparent',
-              color: state.currentSection === item.id ? '#38bdf8' : '#4a7a9b',
-              padding: '0 14px',
-              height: '100%',
-              cursor: 'pointer',
-              fontFamily: '"Courier New", monospace',
-              fontSize: 9,
-              letterSpacing: '1.5px',
-              fontWeight: state.currentSection === item.id ? 700 : 400,
-              transition: 'all 0.15s',
-              whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={e => {
-              if (state.currentSection !== item.id) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#7dd3fc';
-              }
-            }}
-            onMouseLeave={e => {
-              if (state.currentSection !== item.id) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#4a7a9b';
-              }
+              position: 'absolute',
+              bottom: 48,
+              right: 0,
+              width: 250,
+              background: 'rgba(5, 12, 24, 0.95)',
+              border: '1px solid #0284c7',
+              borderRadius: 6,
+              padding: '10px',
+              boxShadow: '0 0 30px rgba(0,0,0,0.8), 0 0 20px rgba(56,189,248,0.2)',
+              backdropFilter: 'blur(8px)',
             }}
           >
-            {item.label.toUpperCase()}
-          </button>
-        ))}
+            <div style={{ color: '#38bdf8', fontSize: 9, fontWeight: 800, letterSpacing: 1.5, marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid #1e3a5f' }}>
+              LAB CONTROL SYSTEM
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              {STATIONS.map((station) => (
+                <button
+                  key={station.id}
+                  onClick={() => navigate(station.id)}
+                  style={{
+                    background: state.currentSection === station.id ? 'rgba(56,189,248,0.15)' : 'transparent',
+                    border: 'none',
+                    borderRadius: 3,
+                    color: state.currentSection === station.id ? '#38bdf8' : '#94a3b8',
+                    padding: '6px 8px',
+                    fontSize: 9.5,
+                    fontFamily: 'inherit',
+                    fontWeight: 600,
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    transition: 'all 0.15s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (state.currentSection !== station.id) {
+                      e.currentTarget.style.color = '#f8fafc';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (state.currentSection !== station.id) {
+                      e.currentTarget.style.color = '#94a3b8';
+                      e.currentTarget.style.background = 'transparent';
+                    }
+                  }}
+                >
+                  <span style={{ color: '#38bdf8', fontSize: 10 }}>{station.icon}</span>
+                  <span>{station.label}</span>
+                </button>
+              ))}
+            </div>
 
-        {/* Separator */}
-        <div style={{ width: 1, height: 20, background: '#0e3060', margin: '0 12px' }} />
+            <div style={{ marginTop: 8, paddingTop: 6, borderTop: '1px solid #1e2e46', display: 'flex', justifyContent: 'space-between' }}>
+              <a
+                href="/resume/Pratik_Mandani.pdf"
+                download="Pratik_Mandani_Resume.pdf"
+                style={{ color: '#38bdf8', fontSize: 8.5, textDecoration: 'none', fontWeight: 700 }}
+              >
+                RESUME ↓
+              </a>
+              <a
+                href="https://github.com/pratik-mandani"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', fontSize: 8.5, textDecoration: 'none' }}
+              >
+                GITHUB ↗
+              </a>
+            </div>
+          </div>
+        )}
 
-        {/* GitHub link */}
-        <a
-          href="https://github.com/pratik-mandani"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Minimalist Trigger Button */}
+        <button
+          onClick={() => setOpen(!open)}
           style={{
-            color: '#4a7a9b',
-            textDecoration: 'none',
-            fontFamily: '"Courier New", monospace',
-            fontSize: 9,
-            letterSpacing: '1.5px',
-            padding: '0 10px',
-            height: '100%',
+            background: open ? '#0284c7' : 'rgba(5, 12, 24, 0.9)',
+            border: '1px solid #0284c7',
+            borderRadius: 4,
+            color: '#f8fafc',
+            padding: '8px 14px',
+            fontSize: 10,
+            fontFamily: 'inherit',
+            fontWeight: 800,
+            letterSpacing: 1.5,
+            cursor: 'pointer',
+            boxShadow: '0 0 15px rgba(56,189,248,0.25)',
             display: 'flex',
             alignItems: 'center',
+            gap: 6,
+            backdropFilter: 'blur(6px)',
           }}
         >
-          GITHUB ↗
-        </a>
-      </nav>
-
-      {/* Section indicator — top center */}
-      {state.introComplete && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 14,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 50,
-            fontFamily: '"Courier New", monospace',
-            fontSize: 9,
-            color: '#1e5a9a',
-            letterSpacing: 3,
-            pointerEvents: 'none',
-          }}
-        >
-          {state.currentSection === 'home' ? 'LOOKING AT WORKSTATION' :
-           state.currentSection === 'journey' ? 'CAREER TIMELINE WALL' :
-           state.currentSection === 'hardware' ? 'ELECTRONICS WORKBENCH' :
-           state.currentSection === 'kotl' ? 'KOTL ROBOT — EMBEDDED PROJECT' :
-           state.currentSection === 'projects' ? 'PROJECT ARCHIVE PANEL' :
-           state.currentSection === 'experience' ? 'WORK EXPERIENCE' :
-           state.currentSection === 'resume' ? 'RESUME & DOWNLOAD' :
-           'CONTACT STATION'}
-        </div>
-      )}
+          <span style={{ color: open ? '#ffffff' : '#38bdf8' }}>⬡</span>
+          <span>[ LAB CONTROL {open ? '▴' : '▾'} ]</span>
+        </button>
+      </div>
     </>
   );
 }
