@@ -1,41 +1,87 @@
-// Main App — orchestrates Canvas, UI overlays, and mobile layout
-import { Canvas } from '@react-three/fiber';
-import { LabProvider } from './context/LabContext';
-import { LabScene } from './components/3d/LabScene';
-import { NavOverlay } from './components/ui/NavOverlay';
-import { SectionPanel } from './components/ui/SectionPanel';
-import { CaseStudyModal } from './components/ui/CaseStudyModal';
-import { MobileLabLayout } from './components/ui/MobileLabLayout';
-import { useIsMobile } from './hooks/useIsMobile';
-
-function DesktopLab() {
-  return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', background: '#0e1218', position: 'relative' }}>
-      {/* R3F Canvas — 3D scene immediately visible at cinematic medium-wide framing */}
-      <Canvas
-        camera={{ position: [0, 2.0, 3.8], fov: 48, near: 0.1, far: 50 }}
-        style={{ position: 'fixed', inset: 0, zIndex: 1 }}
-        gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
-        shadows={false}
-        dpr={[1, 1.5]}
-      >
-        <LabScene />
-      </Canvas>
-
-      {/* 2D UI overlays & panels — non-blocking, accessible */}
-      <NavOverlay />
-      <SectionPanel />
-      <CaseStudyModal />
-    </div>
-  );
-}
+import { useState, useEffect } from 'react';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
+import { Hero } from './components/sections/Hero';
+import { About } from './components/sections/About';
+import { JourneyTimeline } from './components/sections/JourneyTimeline';
+import { ProductDevSection } from './components/sections/ProductDevSection';
+import { FeaturedProjects } from './components/sections/FeaturedProjects';
+import { KotlSpotlight } from './components/sections/KotlSpotlight';
+import { WebDevelopment } from './components/sections/WebDevelopment';
+import { SkillsSection } from './components/sections/SkillsSection';
+import { ExperienceSection } from './components/sections/ExperienceSection';
+import { ResumeSection } from './components/sections/ResumeSection';
+import { ContactSection } from './components/sections/ContactSection';
+import { CaseStudyModal } from './components/modals/CaseStudyModal';
+import { projectCaseStudies } from './data/portfolioData';
+import { ProjectCaseStudy } from './types';
 
 export default function App() {
-  const isMobile = useIsMobile();
+  const [darkMode, setDarkMode] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectCaseStudy | null>(null);
+
+  // Initialize theme from system or user preference
+  useEffect(() => {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    setDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  function toggleDarkMode() {
+    setDarkMode((prev) => {
+      const next = !prev;
+      if (next) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+      return next;
+    });
+  }
+
+  // Find KOTL project for the dedicated spotlight
+  const kotlProject = projectCaseStudies.find((p) => p.id === 'kotl-emotional-robot') || projectCaseStudies[0];
 
   return (
-    <LabProvider>
-      {isMobile ? <MobileLabLayout /> : <DesktopLab />}
-    </LabProvider>
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors flex flex-col font-sans">
+      {/* Sticky Header */}
+      <Header darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+
+      {/* Main Content Area */}
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <JourneyTimeline />
+        <ProductDevSection />
+        <FeaturedProjects
+          projects={projectCaseStudies}
+          onSelectProject={(project) => setSelectedProject(project)}
+        />
+        <KotlSpotlight
+          kotlProject={kotlProject}
+          onOpenKotlModal={() => setSelectedProject(kotlProject)}
+        />
+        <WebDevelopment />
+        <SkillsSection />
+        <ExperienceSection />
+        <ResumeSection />
+        <ContactSection />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Clean Project Detail Modal */}
+      <CaseStudyModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </div>
   );
 }
