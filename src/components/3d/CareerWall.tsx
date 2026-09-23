@@ -1,83 +1,87 @@
-// Career wall — back wall timeline display of engineering journey
+// Architectural Career Wall Installation
+// Displays the exact requested engineering progression on the back feature wall
+// Clicking smoothly glides the camera toward the wall and opens the detailed journey breakdown
 import { Html } from '@react-three/drei';
 import { useLab } from '../../context/LabContext';
-import { journeyMilestones } from '../../data/portfolioData';
 
-const CATEGORY_COLORS: Record<string, string> = {
-  production: '#f59e0b',
-  testing: '#60a5fa',
-  hardware: '#22d3ee',
-  rd: '#4ade80',
-  web: '#818cf8',
-  robotics: '#f472b6',
-};
+const JOURNEY_STEPS = [
+  'Production Assembly',
+  'Team Lead (200+ Units Sprint)',
+  'Machine Testing & QA/QC',
+  'PCB Prototyping & Rework',
+  'Vending R&D Integration',
+  'Frontend Development',
+  'PHP & Database Systems',
+  'Laravel & Full-Stack (100+ Platforms)',
+  'Embedded Projects (KOTL)',
+];
 
-function CareerWallContent() {
+function CareerWallDisplay() {
   const { dispatch } = useLab();
 
-  function handleOpen() {
+  function handleClick() {
     dispatch({ type: 'NAVIGATE', section: 'journey' });
     dispatch({ type: 'OPEN_PANEL', panel: 'journey' });
   }
 
   return (
     <div
-      onClick={handleOpen}
+      onClick={handleClick}
       style={{
-        width: '700px',
-        height: '340px',
-        background: 'rgba(3, 9, 18, 0.97)',
-        border: '1px solid #0e3060',
-        borderRadius: '4px',
-        fontFamily: '"Courier New", monospace',
-        color: '#7dd3fc',
-        padding: '12px 14px',
+        width: '460px',
+        background: 'rgba(5, 10, 18, 0.94)',
+        border: '1px solid #1e3a5f',
+        borderTop: '2px solid #38bdf8',
+        borderRadius: '6px',
+        fontFamily: '"JetBrains Mono", "Courier New", monospace',
+        color: '#e2e8f0',
+        padding: '16px 20px',
         boxSizing: 'border-box',
-        overflow: 'hidden',
         cursor: 'pointer',
         userSelect: 'none',
         pointerEvents: 'auto',
+        boxShadow: '0 0 35px rgba(0,0,0,0.8), 0 0 15px rgba(56,189,248,0.1)',
       }}
     >
-      {/* Header */}
-      <div style={{ borderBottom: '1px solid #0e3060', paddingBottom: '8px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1e2e46', paddingBottom: '8px', marginBottom: '10px' }}>
         <div>
-          <div style={{ color: '#38bdf8', fontSize: '11px', letterSpacing: '3px', fontWeight: 700 }}>CAREER JOURNEY // ENGINEERING TIMELINE</div>
-          <div style={{ color: '#4a7a9b', fontSize: '8px', marginTop: '2px' }}>11 milestones across product development, hardware, and full-stack web</div>
-        </div>
-        <div style={{ color: '#4ade80', fontSize: '9px', letterSpacing: '1px' }}>[ CLICK TO EXPAND ]</div>
-      </div>
-
-      {/* Timeline items — compact grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px' }}>
-        {journeyMilestones.map((m) => (
-          <div
-            key={m.id}
-            style={{
-              background: '#05101e',
-              border: `1px solid ${CATEGORY_COLORS[m.category] || '#0e3060'}22`,
-              borderLeft: `2px solid ${CATEGORY_COLORS[m.category] || '#0e3060'}`,
-              borderRadius: '3px',
-              padding: '6px 8px',
-            }}
-          >
-            <div style={{ color: CATEGORY_COLORS[m.category] || '#38bdf8', fontSize: '7px', letterSpacing: '1px', marginBottom: '2px' }}>
-              {m.stepNumber.toString().padStart(2, '0')} // {m.period}
-            </div>
-            <div style={{ color: '#e2e8f0', fontSize: '8px', fontWeight: 600, lineHeight: 1.3 }}>
-              {m.title}
-            </div>
-            <div style={{ color: '#4a7a9b', fontSize: '7px', marginTop: '2px' }}>{m.company}</div>
+          <div style={{ color: '#38bdf8', fontSize: '11px', fontWeight: 800, letterSpacing: '2px' }}>
+            MY ENGINEERING JOURNEY
           </div>
-        ))}
+          <div style={{ color: '#64748b', fontSize: '8px', letterSpacing: '1px' }}>
+            FROM FACTORY FLOOR TO FULL-STACK & EMBEDDED
+          </div>
+        </div>
+        <div style={{ color: '#4ade80', fontSize: '8px', fontWeight: 700, letterSpacing: '1px' }}>
+          [ CLICK TO EXPAND ]
+        </div>
       </div>
 
-      {/* Footer */}
-      <div style={{ marginTop: '8px', borderTop: '1px solid #0a1e3a', paddingTop: '6px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-        {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
-          <div key={cat} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <div style={{ width: '8px', height: '8px', background: color, borderRadius: '1px' }} />
-            <span style={{ color: '#4a7a9b', fontSize: '7px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>{cat}</span>
+      {/* Vertical progression flow */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+        {JOURNEY_STEPS.map((step, i) => (
+          <div key={step}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '3px 8px',
+              borderRadius: '3px',
+              background: i === JOURNEY_STEPS.length - 1 ? 'rgba(56,189,248,0.12)' : 'rgba(255,255,255,0.02)',
+              border: i === JOURNEY_STEPS.length - 1 ? '1px solid rgba(56,189,248,0.3)' : '1px solid transparent',
+            }}>
+              <span style={{ color: '#38bdf8', fontSize: '8px', fontWeight: 800, minWidth: '16px' }}>
+                0{i + 1}
+              </span>
+              <span style={{ color: i === JOURNEY_STEPS.length - 1 ? '#38bdf8' : '#cbd5e1', fontSize: '9px', fontWeight: i === JOURNEY_STEPS.length - 1 ? 700 : 500 }}>
+                {step}
+              </span>
+            </div>
+            {i < JOURNEY_STEPS.length - 1 && (
+              <div style={{ color: '#1e3a5f', fontSize: '8px', paddingLeft: '24px', lineHeight: '1' }}>
+                ↓
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -87,63 +91,35 @@ function CareerWallContent() {
 
 export function CareerWall() {
   return (
-    <group>
-      {/* Back wall display panel frame */}
-      <mesh position={[0, 2.8, -8.48]} castShadow>
-        <boxGeometry args={[5.0, 2.6, 0.06]} />
-        <meshStandardMaterial color="#0a1020" roughness={0.8} metalness={0.3} emissive="#060f1e" emissiveIntensity={0.3} />
+    <group position={[0, 2.35, -3.05]}>
+      {/* Wall mounting plate with subtle architectural halo */}
+      <mesh castShadow receiveShadow>
+        <boxGeometry args={[2.4, 2.0, 0.03]} />
+        <meshStandardMaterial
+          color="#0b1019"
+          metalness={0.7}
+          roughness={0.3}
+          emissive="#0a1a30"
+          emissiveIntensity={0.25}
+        />
       </mesh>
 
-      {/* Screen surface */}
-      <mesh position={[0, 2.8, -8.45]}>
-        <planeGeometry args={[4.8, 2.4]} />
-        <meshStandardMaterial color="#030912" emissive="#081428" emissiveIntensity={0.4} />
+      {/* Thin anodized aluminum frame */}
+      <mesh position={[0, 0, 0.018]}>
+        <boxGeometry args={[2.42, 2.02, 0.01]} />
+        <meshStandardMaterial color="#1e293b" metalness={0.8} roughness={0.3} />
       </mesh>
 
-      {/* Corner accent lights */}
-      {[[-2.4, 3.9], [2.4, 3.9], [-2.4, 1.7], [2.4, 1.7]].map(([x, y], i) => (
-        <mesh key={i} position={[x, y, -8.44]}>
-          <sphereGeometry args={[0.025, 6, 6]} />
-          <meshStandardMaterial color="#38bdf8" emissive="#38bdf8" emissiveIntensity={3} />
-        </mesh>
-      ))}
-
-      {/* Side bracket accents */}
-      <mesh position={[-2.42, 2.8, -8.44]}>
-        <boxGeometry args={[0.02, 2.2, 0.04]} />
-        <meshStandardMaterial color="#1e5a9a" emissive="#1e5a9a" emissiveIntensity={0.5} />
-      </mesh>
-      <mesh position={[2.42, 2.8, -8.44]}>
-        <boxGeometry args={[0.02, 2.2, 0.04]} />
-        <meshStandardMaterial color="#1e5a9a" emissive="#1e5a9a" emissiveIntensity={0.5} />
-      </mesh>
-
-      {/* Small side panels */}
-      <mesh position={[-4.2, 2.8, -8.48]}>
-        <boxGeometry args={[1.6, 2.0, 0.05]} />
-        <meshStandardMaterial color="#080e1c" roughness={0.9} metalness={0.2} emissive="#04080e" emissiveIntensity={0.2} />
-      </mesh>
-      <mesh position={[4.2, 2.8, -8.48]}>
-        <boxGeometry args={[1.6, 2.0, 0.05]} />
-        <meshStandardMaterial color="#080e1c" roughness={0.9} metalness={0.2} emissive="#04080e" emissiveIntensity={0.2} />
-      </mesh>
-
-      {/* HTML timeline overlay */}
+      {/* HTML Overlay with clickable journey timeline */}
       <Html
         transform
-        position={[0, 2.8, -8.42]}
-        distanceFactor={2.8}
+        position={[0, 0, 0.022]}
+        distanceFactor={1.75}
         occlude={false}
         style={{ pointerEvents: 'auto' }}
       >
-        <CareerWallContent />
+        <CareerWallDisplay />
       </Html>
-
-      {/* Label below panel */}
-      <mesh position={[0, 1.4, -8.46]}>
-        <planeGeometry args={[3, 0.18]} />
-        <meshStandardMaterial color="#0a1628" emissive="#0d2040" emissiveIntensity={0.5} />
-      </mesh>
     </group>
   );
 }

@@ -12,22 +12,20 @@ import { KotlRobot } from './KotlRobot';
 import { CareerWall } from './CareerWall';
 import { ProjectPanels } from './ProjectPanels';
 import { useLab } from '../../context/LabContext';
-import { CAMERA_POSITIONS, INTRO_CAMERA } from '../../scenes/cameraPositions';
+import { CAMERA_POSITIONS } from '../../scenes/cameraPositions';
 
 function SceneFallback() {
   return (
     <mesh position={[0, 1, 0]}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#0a1628" />
+      <meshStandardMaterial color="#0e1218" />
     </mesh>
   );
 }
 
 export function LabScene() {
   const { state } = useLab();
-  const cameraTarget = state.introComplete
-    ? CAMERA_POSITIONS[state.currentSection]
-    : INTRO_CAMERA;
+  const cameraTarget = CAMERA_POSITIONS[state.currentSection] || CAMERA_POSITIONS.home;
 
   return (
     <Suspense fallback={<SceneFallback />}>

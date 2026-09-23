@@ -1,200 +1,164 @@
-// 4 secondary monitors showing profile, system status, career stats, live terminal
-import { useRef, useState, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
+// Purposeful secondary monitors flanking the main display
+// Left: Pratik's Engineering Identity & Competencies
+// Right: AI System Pipeline & Verified Systems
+// No meaningless random terminal gibberish — clear, readable, narrative data
 import { Html } from '@react-three/drei';
-import * as THREE from 'three';
 
-function ProfileMonitor() {
+function LeftIdentityContent() {
   return (
-    <div style={{
-      width: '240px', height: '180px',
-      background: '#030912', border: '1px solid #0e3060',
-      fontFamily: '"Courier New", monospace', color: '#7dd3fc',
-      padding: '8px', boxSizing: 'border-box', overflow: 'hidden',
-    }}>
-      <div style={{ color: '#38bdf8', fontSize: '8px', letterSpacing: '2px', borderBottom: '1px solid #0e3060', paddingBottom: '4px', marginBottom: '6px' }}>
-        ENGINEER_PROFILE.sys
-      </div>
-      <div style={{ fontSize: '11px', color: '#f0f9ff', fontWeight: 700, marginBottom: '4px' }}>Pratik Mandani</div>
-      <div style={{ fontSize: '8px', color: '#60a5fa', marginBottom: '8px', letterSpacing: '0.5px' }}>
-        Rajkot, Gujarat, India
-      </div>
-      {[
-        { label: 'ROLE', value: 'Full-Stack Developer' },
-        { label: 'COMPANY', value: 'Altius Infoway' },
-        { label: 'WEB EXP', value: '4+ Years' },
-        { label: 'INDUSTRIAL', value: '7+ Years' },
-        { label: 'PLATFORMS', value: '100+ Live' },
-      ].map(({ label, value }) => (
-        <div key={label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '8px', marginBottom: '3px' }}>
-          <span style={{ color: '#4a7a9b' }}>{label}</span>
-          <span style={{ color: '#7dd3fc' }}>{value}</span>
+    <div
+      style={{
+        width: '320px',
+        height: '240px',
+        background: 'linear-gradient(180deg, #040913 0%, #03070f 100%)',
+        border: '1px solid #1e3a5f',
+        borderRadius: '5px',
+        fontFamily: '"JetBrains Mono", "Courier New", monospace',
+        color: '#e2e8f0',
+        padding: '14px 16px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        userSelect: 'none',
+        pointerEvents: 'none',
+      }}
+    >
+      <div style={{ borderBottom: '1px solid #1e2e46', paddingBottom: '6px', marginBottom: '10px' }}>
+        <div style={{ color: '#38bdf8', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px' }}>
+          PRATIK // ENGINEER
         </div>
-      ))}
-      <div style={{ marginTop: '6px', borderTop: '1px solid #0a1e3a', paddingTop: '4px' }}>
-        <div style={{ fontSize: '7px', color: '#1e5a9a', letterSpacing: '1px' }}>
-          github.com/pratik-mandani
+        <div style={{ color: '#64748b', fontSize: '8px', letterSpacing: '1px' }}>
+          CORE COMPETENCIES & DOMAINS
         </div>
       </div>
-    </div>
-  );
-}
 
-function SystemsMonitor() {
-  const systems = [
-    { name: 'PHP/Laravel', val: 90, color: '#818cf8' },
-    { name: 'MySQL', val: 85, color: '#60a5fa' },
-    { name: 'JavaScript', val: 82, color: '#fbbf24' },
-    { name: 'ESP32/C++', val: 75, color: '#4ade80' },
-    { name: 'PCB Design', val: 70, color: '#22d3ee' },
-    { name: 'HTML5/CSS3', val: 92, color: '#f472b6' },
-  ];
-  return (
-    <div style={{
-      width: '240px', height: '180px',
-      background: '#030912', border: '1px solid #0e2860',
-      fontFamily: '"Courier New", monospace', color: '#7dd3fc',
-      padding: '8px', boxSizing: 'border-box', overflow: 'hidden',
-    }}>
-      <div style={{ color: '#818cf8', fontSize: '8px', letterSpacing: '2px', borderBottom: '1px solid #0e2060', paddingBottom: '4px', marginBottom: '6px' }}>
-        SKILLS_MATRIX.sys
-      </div>
-      {systems.map(({ name, val, color }) => (
-        <div key={name} style={{ marginBottom: '5px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '7px', marginBottom: '2px' }}>
-            <span style={{ color: '#94a3b8' }}>{name}</span>
-            <span style={{ color }}>{val}%</span>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '10px' }}>
+        {[
+          { label: 'Product Development', tag: '7+ Yrs' },
+          { label: 'Electronics & QA/QC', tag: 'Benchtop' },
+          { label: 'Embedded Systems', tag: 'ESP32/C++' },
+          { label: 'Firmware Architecture', tag: 'RTOS' },
+          { label: 'Full-Stack Web Dev', tag: 'Altius Infoway' },
+        ].map(({ label, tag }) => (
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '10px' }}>
+            <span style={{ color: '#f1f5f9', fontWeight: 600 }}>{label}</span>
+            <span style={{ color: '#38bdf8', fontSize: '8px', background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.2)', padding: '1px 5px', borderRadius: '2px' }}>
+              {tag}
+            </span>
           </div>
-          <div style={{ background: '#050f1f', height: '4px', borderRadius: '2px', overflow: 'hidden' }}>
-            <div style={{ width: `${val}%`, height: '100%', background: color, borderRadius: '2px', transition: 'width 0.3s' }} />
+        ))}
+      </div>
+
+      <div style={{ borderTop: '1px solid #162438', paddingTop: '6px', display: 'flex', justifyContent: 'space-between', fontSize: '8px', color: '#64748b' }}>
+        <span>LOC: RAJKOT, GUJARAT</span>
+        <span style={{ color: '#22c55e' }}>● STATUS: READY</span>
+      </div>
+    </div>
+  );
+}
+
+function RightPipelineContent() {
+  return (
+    <div
+      style={{
+        width: '320px',
+        height: '240px',
+        background: 'linear-gradient(180deg, #040913 0%, #03070f 100%)',
+        border: '1px solid #2e1e5f',
+        borderRadius: '5px',
+        fontFamily: '"JetBrains Mono", "Courier New", monospace',
+        color: '#e2e8f0',
+        padding: '14px 16px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        userSelect: 'none',
+        pointerEvents: 'none',
+      }}
+    >
+      <div style={{ borderBottom: '1px solid #2e1e5f', paddingBottom: '6px', marginBottom: '8px' }}>
+        <div style={{ color: '#a78bfa', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px' }}>
+          AI SYSTEM PIPELINE
+        </div>
+        <div style={{ color: '#64748b', fontSize: '8px', letterSpacing: '1px' }}>
+          VERIFIED SUBSYSTEMS
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '8px' }}>
+        {[
+          { label: 'Product Development', ok: true },
+          { label: 'PCB Development', ok: true },
+          { label: 'Vending R&D', ok: true },
+          { label: 'Laravel & SQL', ok: true },
+          { label: 'Embedded Firmware', ok: true },
+        ].map(({ label, ok }) => (
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '9.5px' }}>
+            <span style={{ color: '#cbd5e1' }}>{label}</span>
+            <span style={{ color: '#4ade80', fontWeight: 700 }}>✓</span>
           </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function TerminalMonitor() {
-  const lines = [
-    '> BOOTING engineering_lab_v2.0',
-    '> Loading career_data.json ... OK',
-    '> Initializing 3D_scene.tsx ... OK',
-    '> Connecting to portfolio_api ... OK',
-    '',
-    '> STATS:',
-    '  ◈ Web Platforms : 100+',
-    '  ◈ Vending Units : 200+ QA',
-    '  ◈ Years Exp     : 7+ industrial',
-    '  ◈ ESP32 Projs   : 2+ firmware',
-    '',
-    '> STATUS: ENGINEER_ONLINE ✓',
-    '> Ready. Enter lab to explore._',
-  ];
-  const [visibleLines, setVisibleLines] = useState(1);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setVisibleLines(v => (v < lines.length ? v + 1 : v));
-    }, 350);
-    return () => clearInterval(id);
-  }, []);
-
-  return (
-    <div style={{
-      width: '240px', height: '180px',
-      background: '#030912', border: '1px solid #0e4020',
-      fontFamily: '"Courier New", monospace', color: '#4ade80',
-      padding: '8px', boxSizing: 'border-box', overflow: 'hidden',
-      fontSize: '8px', lineHeight: '1.6',
-    }}>
-      <div style={{ color: '#22d3ee', fontSize: '8px', letterSpacing: '2px', borderBottom: '1px solid #0a3020', paddingBottom: '4px', marginBottom: '6px' }}>
-        SYSTEM_TERMINAL.sh
+        ))}
       </div>
-      {lines.slice(0, visibleLines).map((line, i) => (
-        <div key={i} style={{ color: line.startsWith('> STATUS') ? '#4ade80' : line.startsWith('  ◈') ? '#7dd3fc' : line.startsWith('> STATS') ? '#fbbf24' : '#4ade80' }}>
-          {line || '\u00A0'}
-        </div>
-      ))}
-    </div>
-  );
-}
 
-function CareerStatMonitor() {
-  const stats = [
-    { label: 'Current Role', val: 'Full-Stack Dev', sub: 'Altius Infoway' },
-    { label: 'Prev. Domain', val: 'Product/Embedded', sub: 'Symbian Vending' },
-    { label: 'Education', val: 'Diploma ECE', sub: 'GTU — 2018' },
-    { label: 'Location', val: 'Rajkot, GJ, IN', sub: 'India' },
-  ];
-  return (
-    <div style={{
-      width: '240px', height: '180px',
-      background: '#030912', border: '1px solid #2a1a5e',
-      fontFamily: '"Courier New", monospace', color: '#7dd3fc',
-      padding: '8px', boxSizing: 'border-box', overflow: 'hidden',
-    }}>
-      <div style={{ color: '#a78bfa', fontSize: '8px', letterSpacing: '2px', borderBottom: '1px solid #1a1040', paddingBottom: '4px', marginBottom: '6px' }}>
-        CAREER_LOG.dat
-      </div>
-      {stats.map(({ label, val, sub }) => (
-        <div key={label} style={{ marginBottom: '10px' }}>
-          <div style={{ color: '#64748b', fontSize: '7px', letterSpacing: '1px' }}>{label.toUpperCase()}</div>
-          <div style={{ color: '#e2e8f0', fontSize: '9px', fontWeight: 600, marginTop: '1px' }}>{val}</div>
-          <div style={{ color: '#4a7a9b', fontSize: '7px' }}>{sub}</div>
+      {/* Next focus box */}
+      <div style={{ background: '#09081a', border: '1px solid #3b2075', borderRadius: '3px', padding: '6px 8px' }}>
+        <div style={{ color: '#fbbf24', fontSize: '8px', fontWeight: 700, letterSpacing: '1px' }}>
+          NEXT OBJECTIVE:
         </div>
-      ))}
-      <div style={{ borderTop: '1px solid #1a1040', paddingTop: '4px', fontSize: '7px', color: '#4a1d96' }}>
-        TOTAL_EXP // 7+ YRS TOTAL
+        <div style={{ color: '#f8fafc', fontSize: '10px', fontWeight: 700, marginTop: '1px' }}>
+          KOTL ROBOT PLATFORM
+        </div>
+        <div style={{ color: '#94a3b8', fontSize: '7.5px' }}>
+          Autonomous sensory states & FreeRTOS routines
+        </div>
       </div>
     </div>
   );
 }
 
-interface SmallMonitorProps {
+interface MonitorFrameProps {
   position: [number, number, number];
-  rotation?: [number, number, number];
+  rotation: [number, number, number];
+  accentColor: string;
   children: React.ReactNode;
-  color: string;
 }
 
-function SmallMonitor({ position, rotation = [0, 0, 0], children, color }: SmallMonitorProps) {
-  const frameRef = useRef<THREE.Mesh>(null);
-
-  useFrame(({ clock }) => {
-    if (frameRef.current) {
-      const mat = frameRef.current.material as THREE.MeshStandardMaterial;
-      mat.emissiveIntensity = 0.1 + Math.sin(clock.elapsedTime * 1.2 + position[0]) * 0.04;
-    }
-  });
-
+function MonitorFrame({ position, rotation, accentColor, children }: MonitorFrameProps) {
   return (
     <group position={position} rotation={rotation}>
-      {/* Frame */}
-      <mesh ref={frameRef} castShadow>
-        <boxGeometry args={[1.58, 1.18, 0.05]} />
-        <meshStandardMaterial color="#0d1527" metalness={0.6} roughness={0.4} emissive={color} emissiveIntensity={0.1} />
+      {/* Sleek aluminum monitor bezel */}
+      <mesh castShadow receiveShadow>
+        <boxGeometry args={[0.98, 0.74, 0.035]} />
+        <meshStandardMaterial
+          color="#121824"
+          metalness={0.85}
+          roughness={0.25}
+        />
       </mesh>
-      {/* Screen */}
-      <mesh position={[0, 0, 0.026]}>
-        <planeGeometry args={[1.46, 1.06]} />
-        <meshStandardMaterial color="#030912" emissive={color} emissiveIntensity={0.12} />
+
+      {/* Screen panel glass */}
+      <mesh position={[0, 0, 0.018]}>
+        <planeGeometry args={[0.94, 0.7]} />
+        <meshStandardMaterial
+          color="#030812"
+          roughness={0.2}
+          emissive={accentColor}
+          emissiveIntensity={0.12}
+        />
       </mesh>
-      {/* Stand */}
-      <mesh position={[0, -0.65, 0.01]}>
-        <boxGeometry args={[0.06, 0.1, 0.04]} />
-        <meshStandardMaterial color="#1e293b" metalness={0.6} />
-      </mesh>
-      <mesh position={[0, -0.72, 0.05]}>
-        <boxGeometry args={[0.35, 0.03, 0.22]} />
-        <meshStandardMaterial color="#1e293b" metalness={0.6} />
-      </mesh>
+
       {/* Power LED */}
-      <mesh position={[0.7, -0.53, 0.03]}>
-        <sphereGeometry args={[0.01, 6, 6]} />
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={4} />
+      <mesh position={[0.44, -0.34, 0.019]}>
+        <sphereGeometry args={[0.005, 6, 6]} />
+        <meshStandardMaterial color={accentColor} emissive={accentColor} emissiveIntensity={3} />
       </mesh>
+
       {/* HTML Content */}
-      <Html transform position={[0, 0, 0.03]} distanceFactor={1.2} occlude={false} style={{ pointerEvents: 'none' }}>
+      <Html
+        transform
+        position={[0, 0, 0.021]}
+        distanceFactor={0.82}
+        occlude={false}
+        style={{ pointerEvents: 'none' }}
+      >
         {children}
       </Html>
     </group>
@@ -204,25 +168,23 @@ function SmallMonitor({ position, rotation = [0, 0, 0], children, color }: Small
 export function SecondaryMonitors() {
   return (
     <>
-      {/* Left monitor — Profile */}
-      <SmallMonitor position={[-3.05, 1.78, -2.22]} color="#38bdf8">
-        <ProfileMonitor />
-      </SmallMonitor>
+      {/* Left Screen: Pratik's Identity & Core Competencies, angled inward */}
+      <MonitorFrame
+        position={[-1.38, 1.45, -0.68]}
+        rotation={[0, 0.38, 0]}
+        accentColor="#38bdf8"
+      >
+        <LeftIdentityContent />
+      </MonitorFrame>
 
-      {/* Right monitor — Skills matrix */}
-      <SmallMonitor position={[3.05, 1.78, -2.22]} color="#818cf8">
-        <SystemsMonitor />
-      </SmallMonitor>
-
-      {/* Upper left — Terminal */}
-      <SmallMonitor position={[-1.55, 2.65, -2.3]} rotation={[0.08, 0.05, 0]} color="#4ade80">
-        <TerminalMonitor />
-      </SmallMonitor>
-
-      {/* Upper right — Career log */}
-      <SmallMonitor position={[1.55, 2.65, -2.3]} rotation={[0.08, -0.05, 0]} color="#a78bfa">
-        <CareerStatMonitor />
-      </SmallMonitor>
+      {/* Right Screen: AI Pipeline & Status, angled inward */}
+      <MonitorFrame
+        position={[1.38, 1.45, -0.68]}
+        rotation={[0, -0.38, 0]}
+        accentColor="#a78bfa"
+      >
+        <RightPipelineContent />
+      </MonitorFrame>
     </>
   );
 }

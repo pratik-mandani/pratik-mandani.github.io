@@ -1,9 +1,7 @@
 // Main App — orchestrates Canvas, UI overlays, and mobile layout
-import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { LabProvider } from './context/LabContext';
 import { LabScene } from './components/3d/LabScene';
-import { IntroScreen } from './components/ui/IntroScreen';
 import { NavOverlay } from './components/ui/NavOverlay';
 import { SectionPanel } from './components/ui/SectionPanel';
 import { CaseStudyModal } from './components/ui/CaseStudyModal';
@@ -11,13 +9,11 @@ import { MobileLabLayout } from './components/ui/MobileLabLayout';
 import { useIsMobile } from './hooks/useIsMobile';
 
 function DesktopLab() {
-  const [introVisible, setIntroVisible] = useState(true);
-
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', background: '#020610' }}>
-      {/* R3F Canvas — full screen 3D scene */}
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', background: '#0e1218', position: 'relative' }}>
+      {/* R3F Canvas — 3D scene immediately visible at cinematic medium-wide framing */}
       <Canvas
-        camera={{ position: [0, 5.5, 16], fov: 55, near: 0.1, far: 100 }}
+        camera={{ position: [0, 2.0, 3.8], fov: 48, near: 0.1, far: 50 }}
         style={{ position: 'fixed', inset: 0, zIndex: 1 }}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
         shadows={false}
@@ -26,19 +22,10 @@ function DesktopLab() {
         <LabScene />
       </Canvas>
 
-      {/* 2D UI overlays — rendered above Canvas */}
-      {!introVisible && (
-        <>
-          <NavOverlay />
-          <SectionPanel />
-          <CaseStudyModal />
-        </>
-      )}
-
-      {/* Intro — rendered above everything */}
-      {introVisible && (
-        <IntroScreen onComplete={() => setIntroVisible(false)} />
-      )}
+      {/* 2D UI overlays & panels — non-blocking, accessible */}
+      <NavOverlay />
+      <SectionPanel />
+      <CaseStudyModal />
     </div>
   );
 }
