@@ -62,7 +62,7 @@ export function WebDevelopment() {
                     <img
                       src={project.imagePath}
                       alt={project.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                 ) : (
