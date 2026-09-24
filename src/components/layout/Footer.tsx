@@ -3,7 +3,7 @@ import { personalInfo } from '../../data/portfolioData';
 export function Footer() {
   return (
     <footer className="py-12 bg-white border-t border-slate-200 text-center">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <h3 className="text-base font-bold text-slate-900">
           {personalInfo.name}
         </h3>

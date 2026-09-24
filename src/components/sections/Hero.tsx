@@ -2,8 +2,8 @@ import { personalInfo } from '../../data/portfolioData';
 
 export function Hero() {
   return (
-    <section id="hero" className="py-16 sm:py-20 md:py-24 border-b border-slate-200 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section id="hero" className="py-14 sm:py-18 md:py-20 border-b border-slate-200 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Name */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-2">
           {personalInfo.name}
@@ -15,23 +15,23 @@ export function Hero() {
         </div>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base font-medium text-slate-500 mb-6">
+        <p className="text-xs sm:text-sm md:text-base font-medium text-slate-500 mb-6">
           {personalInfo.subtitle}
         </p>
 
-        {/* Hero Text */}
-        <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-8 max-w-3xl">
+        {/* Hero Intro */}
+        <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed mb-8 max-w-3xl">
           {personalInfo.heroIntro}
         </p>
 
         {/* Hero Statistics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
           {personalInfo.stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-lg border border-slate-200 bg-slate-50/60 text-center"
+              className="p-3.5 sm:p-4 rounded-lg border border-slate-200 bg-slate-50/70 text-center"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">
+              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-0.5">
                 {stat.value}
               </div>
               <div className="text-xs sm:text-sm font-medium text-slate-600">
@@ -42,10 +42,10 @@ export function Hero() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-7">
           <a
             href="#projects"
-            className="px-6 py-2.5 rounded text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-xs"
+            className="w-full sm:w-auto px-6 py-2.5 rounded text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white text-center transition-colors shadow-xs"
           >
             View Projects
           </a>
@@ -53,21 +53,21 @@ export function Hero() {
           <a
             href={personalInfo.contact.resumeUrl}
             download="Pratik_Mandani_Resume.pdf"
-            className="px-6 py-2.5 rounded text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition-colors"
+            className="w-full sm:w-auto px-6 py-2.5 rounded text-sm font-semibold bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-center transition-colors shadow-xs"
           >
             Download Resume
           </a>
 
           <a
             href="#contact"
-            className="px-6 py-2.5 rounded text-sm font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 transition-colors"
+            className="w-full sm:w-auto px-6 py-2.5 rounded text-sm font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-center transition-colors shadow-xs"
           >
             Contact Me
           </a>
         </div>
 
         {/* Quick Social & Contact Channels */}
-        <div className="flex flex-wrap items-center gap-6 text-xs sm:text-sm text-slate-500 pt-4 border-t border-slate-100">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-500 pt-4 border-t border-slate-100">
           <a
             href={personalInfo.contact.github}
             target="_blank"

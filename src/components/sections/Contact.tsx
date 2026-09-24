@@ -17,9 +17,9 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 sm:py-20 border-b border-slate-200 bg-slate-50/50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-xl mx-auto mb-10">
+    <section id="contact" className="py-14 sm:py-18 border-b border-slate-200 bg-slate-50/50">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-xl mx-auto mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
             Let&rsquo;s Build Something
           </h2>
@@ -29,11 +29,11 @@ export function Contact() {
         </div>
 
         {/* Contact Form */}
-        <div className="p-6 sm:p-8 rounded-lg border border-slate-200 bg-white mb-8">
+        <div className="p-5 sm:p-7 rounded-lg border border-slate-200 bg-white mb-8 max-w-3xl mx-auto shadow-xs">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                   Your Name
                 </label>
                 <input
@@ -42,12 +42,12 @@ export function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. John Doe"
-                  className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                   Your Email
                 </label>
                 <input
@@ -56,13 +56,13 @@ export function Contact() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. john@example.com"
-                  className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                 Message
               </label>
               <textarea
@@ -71,7 +71,7 @@ export function Contact() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Share your requirements or message..."
-                className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3.5 py-2 text-sm rounded border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
             </div>
 
@@ -93,12 +93,12 @@ export function Contact() {
         </div>
 
         {/* Direct Channel Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto text-center">
           <a
             href={`mailto:${personalInfo.contact.email}`}
-            className="p-4 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center"
+            className="p-3.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center shadow-2xs"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Email</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Email</span>
             <span className="text-xs font-semibold text-slate-800 break-all">{personalInfo.contact.email}</span>
           </a>
 
@@ -106,9 +106,9 @@ export function Contact() {
             href={personalInfo.contact.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center"
+            className="p-3.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center shadow-2xs"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">GitHub</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">GitHub</span>
             <span className="text-xs font-semibold text-blue-600">pratik-mandani</span>
           </a>
 
@@ -116,14 +116,14 @@ export function Contact() {
             href={personalInfo.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center"
+            className="p-3.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center shadow-2xs"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">LinkedIn</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">LinkedIn</span>
             <span className="text-xs font-semibold text-blue-600">pratik-mandani</span>
           </a>
 
-          <div className="p-4 rounded-lg border border-slate-200 bg-white flex flex-col items-center">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Location</span>
+          <div className="p-3.5 rounded-lg border border-slate-200 bg-white flex flex-col items-center shadow-2xs">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Location</span>
             <span className="text-xs font-semibold text-slate-800">{personalInfo.contact.location}</span>
           </div>
         </div>

@@ -1,10 +1,15 @@
-export type WebCategory = 'all' | 'corporate' | 'ecommerce' | 'erp';
+export type WebCategory = 'all' | 'corporate' | 'ecommerce' | 'business';
 
 export interface JourneyStage {
   stageNumber: number;
   period: string;
   title: string;
   items: string[];
+}
+
+export interface ProductDevGallerySlot {
+  label: string;
+  imagePath?: string;
 }
 
 export interface ProductDevProject {
@@ -15,7 +20,8 @@ export interface ProductDevProject {
   description: string;
   confirmedHardware?: string[];
   responsibilities: string[];
-  imagePath: string;
+  gallerySlots?: ProductDevGallerySlot[];
+  imagePath?: string;
   disclaimer?: string;
 }
 
@@ -27,13 +33,27 @@ export interface KotlProjectDetails {
   hardware: string[];
   firmware: string[];
   currentFeatures: string[];
-  imagePath: string;
+  imagePath?: string;
+}
+
+export interface FeaturedWebProject {
+  id: string;
+  name: string;
+  category: string;
+  role: string;
+  techStack: string[];
+  description: string;
+  frontendNote?: string;
+  features?: string[];
+  workScope?: string[];
+  liveUrl: string;
+  imagePath?: string;
 }
 
 export interface WebProjectItem {
   id: string;
   name: string;
-  category: 'corporate' | 'ecommerce' | 'erp';
+  category: 'corporate' | 'ecommerce' | 'business';
   categoryLabel: string;
   liveUrl: string;
   techStack: string[];
