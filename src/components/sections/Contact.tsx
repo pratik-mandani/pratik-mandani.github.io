@@ -119,7 +119,7 @@ export function Contact() {
             className="p-4 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col items-center"
           >
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">LinkedIn</span>
-            <span className="text-xs font-semibold text-slate-400 italic">Placeholder</span>
+            <span className="text-xs font-semibold text-blue-600">pratik-mandani</span>
           </a>
 
           <div className="p-4 rounded-lg border border-slate-200 bg-white flex flex-col items-center">

@@ -27,8 +27,8 @@ export const personalInfo = {
   contact: {
     email: 'pratikmandani61508@gmail.com',
     github: 'https://github.com/pratik-mandani',
-    linkedin: 'https://linkedin.com/in/pratik-mandani-placeholder',
-    linkedinIsPlaceholder: true,
+    linkedin: 'https://www.linkedin.com/in/pratik-mandani/',
+    linkedinIsPlaceholder: false,
     location: 'Rajkot, Gujarat, India',
     resumeUrl: '/resume/Pratik_Mandani.pdf',
   },
