@@ -27,12 +27,26 @@ export function KotlProject() {
           {/* LEFT: Project Image / Clean Technical Placeholder */}
           <div className="lg:col-span-5 h-full">
             {kotlProjectData.imagePath ? (
-              <div className="rounded-lg overflow-hidden border border-slate-200 bg-slate-100 shadow-xs">
-                <img
-                  src={kotlProjectData.imagePath}
-                  alt={kotlProjectData.title}
-                  className="w-full h-auto object-cover"
-                />
+              <div className="rounded-lg overflow-hidden border border-slate-200 bg-white shadow-xs">
+                <div className="bg-slate-900/5 p-1 flex items-center justify-center">
+                  <img
+                    src={kotlProjectData.imagePath}
+                    alt={kotlProjectData.title}
+                    className="w-full h-auto object-cover rounded"
+                  />
+                </div>
+                <div className="p-3 bg-white border-t border-slate-100">
+                  <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                    <span>Hardware Prototype Rig</span>
+                    <span className="text-emerald-600 font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Verified Setup
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-snug">
+                    Workbench breadboard test rig showing ESP32, SSD1306 OLED (RoboEyes), MAX9814 mic, MAX98357A I2S amplifier, and speaker.
+                  </p>
+                </div>
               </div>
             ) : (
               <div className="rounded-lg border-2 border-dashed border-slate-200 bg-slate-50/70 p-6 sm:p-8 flex flex-col items-center justify-center text-center h-full min-h-[280px] sm:min-h-[380px]">

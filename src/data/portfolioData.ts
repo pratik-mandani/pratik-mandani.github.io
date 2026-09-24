@@ -206,7 +206,7 @@ export const kotlProjectData: KotlProjectDetails = {
     'Audio playback',
     'Non-blocking audio playback',
   ],
-  imagePath: '',
+  imagePath: '/images/projects/kotl/kotl-dev-setup.webp',
 };
 
 export const webDevelopmentIntro =
