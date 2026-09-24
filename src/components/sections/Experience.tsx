@@ -1,137 +1,94 @@
+import { experienceData } from '../../data/portfolioData';
+
 export function Experience() {
-  const experiences = [
-    {
-      company: 'Altius Infoway',
-      role: 'Web Developer / Full-Stack Developer',
-      period: '2022 - Present',
-      location: 'Rajkot, Gujarat, India',
-      summary: 'Developing production web platforms, custom ERPs, and dynamic e-commerce architectures using PHP, Laravel, and MySQL.',
-      achievements: [
-        'Delivered and maintained 100+ live web platforms across industrial manufacturing, ceramic exporters, and architectural brands.',
-        'Engineered scalable relational MySQL database schemas, resolving N+1 bottlenecks to ensure sub-second page delivery.',
-        'Built custom admin portals, role-based access control (RBAC) matrices, and automated quotation RFQ workflows.',
-        'Converted complex Figma UI designs into responsive, accessible, cross-browser frontend code.',
-      ],
-      focus: ['Laravel', 'PHP 8+', 'MySQL', 'REST APIs', 'Blade Templating', 'Admin ERPs'],
-      dotColor: '#22c55e',
-    },
-    {
-      company: 'Symbian Vending Solutions',
-      role: 'Product Development, Hardware & QA Lead',
-      period: '2018 - 2022 (4 Years)',
-      location: 'Rajkot, Gujarat, India',
-      summary: 'Led electro-mechanical assembly, production planning, functional QA/QC diagnostics, PCB prototyping, and smart vending integration.',
-      achievements: [
-        'Spearheaded production team to assemble, test, calibrate, and dispatch 200+ commercial vending units within a 10-day sprint.',
-        'Prototyped the Common Machine Control Card and 24V-to-12V optocoupled Coin Mechanism Interface PCB.',
-        'Orchestrated multi-subsystem integration linking industrial PLCs, Raspberry Pi IoT gateways, and cloud payment web services.',
-        'Conducted precision SMD soldering rework and root-cause failure analysis using digital oscilloscopes and multimeters.',
-      ],
-      focus: ['Hardware Testing', 'PCB Validation', 'SMD Rework', 'QA/QC Protocols', 'PLC & Raspberry Pi', 'System Integration'],
-      dotColor: '#2563eb',
-    },
-  ];
-
   return (
-    <section id="experience" className="py-16 bg-slate-50/70 dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section Heading */}
-        <div className="mb-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
-            <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400"></span>
-            Work History
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Professional Experience
-          </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
-            Detailed career timeline highlighting technical leadership, production delivery, and system integration.
-          </p>
-        </div>
+    <section id="experience" className="py-16 sm:py-20 border-b border-slate-200 bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          Professional Experience
+        </h2>
+        <p className="text-sm text-slate-500 mb-8">
+          Detailed operational history across product manufacturing and full-stack software development.
+        </p>
 
-        {/* Experience Timeline Cards */}
-        <div className="space-y-6">
-          {experiences.map((exp, idx) => (
+        {/* 2 Clean Experience Cards */}
+        <div className="space-y-8">
+          {experienceData.map((exp, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-7 border border-slate-200 dark:border-slate-700/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden"
-              style={{
-                borderLeftWidth: '4px',
-                borderLeftColor: exp.dotColor,
-              }}
+              className="p-6 sm:p-8 rounded-lg border border-slate-200 bg-slate-50/40"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                <div>
-                  <h3 className="font-bold text-lg text-slate-900 dark:text-white">
-                    {exp.role}
-                  </h3>
-                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                    {exp.company}
-                  </div>
-                </div>
+              {/* Header: Company & Period */}
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                <h3 className="text-xl font-bold text-slate-900">
+                  {exp.company}
+                </h3>
+                <span className="text-xs font-semibold px-3 py-1 rounded bg-white text-slate-700 border border-slate-200 self-start sm:self-auto">
+                  {exp.period} ({exp.duration})
+                </span>
+              </div>
 
-                <div className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 self-start sm:self-auto">
-                  {exp.period} • {exp.location}
+              {/* Designation / Team Size */}
+              {exp.designation && (
+                <div className="text-sm font-semibold text-blue-600 mb-3">
+                  Designation: {exp.designation}
+                </div>
+              )}
+              {exp.teamSize && (
+                <div className="text-xs font-medium text-slate-500 mb-3">
+                  {exp.teamSize}
+                </div>
+              )}
+
+              {/* Career Progression Flow */}
+              <div className="mb-5 p-3 rounded bg-white border border-slate-200">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
+                  Career Progression:
+                </span>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-800">
+                  {exp.careerProgression.map((role, rIdx) => (
+                    <div key={rIdx} className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                        {role}
+                      </span>
+                      {rIdx < exp.careerProgression.length - 1 && (
+                        <span className="text-blue-600 font-bold">→</span>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
-                {exp.summary}
-              </p>
+              {/* Summary Description if provided */}
+              {exp.summary && (
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
+                  {exp.summary}
+                </p>
+              )}
 
-              {/* Achievements list */}
-              <div className="mb-4">
+              {/* Context Note if provided */}
+              {exp.contextNote && (
+                <div className="p-3 rounded bg-blue-50/70 border border-blue-200 text-xs text-blue-900 font-medium mb-4">
+                  {exp.contextNote}
+                </div>
+              )}
+
+              {/* Responsibilities */}
+              <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                  Key Achievements &amp; Responsibilities
+                  Key Responsibilities:
                 </span>
-                <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
-                  {exp.achievements.map((ach, aIdx) => (
-                    <li key={aIdx} className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400 font-bold mt-0.5">✓</span>
-                      <span className="leading-normal">{ach}</span>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx} className="flex items-start gap-1.5">
+                      <span className="text-blue-600 font-bold mt-0.5">•</span>
+                      <span>{resp}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-
-              {/* Focus tags */}
-              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 dark:border-slate-700/60">
-                {exp.focus.map((tech, tIdx) => (
-                  <span key={tIdx} className="tech-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
-        </div>
-
-        {/* Education Subsection */}
-        <div className="mt-12">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🎓 Education</span>
-          </h3>
-
-          <div className="bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200 dark:border-slate-700/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
-                Technical Diploma
-              </span>
-              <h4 className="font-bold text-base text-slate-900 dark:text-white mt-0.5">
-                Diploma in Electronics &amp; Communication Engineering
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
-                Gujarat Technological University (GTU) • Rajkot, Gujarat, India
-              </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Foundation in digital electronics, microprocessors, circuit analysis, and embedded control principles.
-              </p>
-            </div>
-
-            <div className="text-xs font-bold px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 self-start sm:self-auto">
-              2015 – 2018
-            </div>
-          </div>
         </div>
       </div>
     </section>

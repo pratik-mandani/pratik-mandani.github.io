@@ -1,77 +1,63 @@
-export type ProjectCategory = 'all' | 'hardware' | 'web' | 'embedded' | 'automation';
+export type WebCategory = 'all' | 'corporate' | 'ecommerce' | 'erp';
 
-export interface JourneyMilestone {
-  id: string;
-  stepNumber: number;
-  title: string;
-  category: 'production' | 'testing' | 'hardware' | 'rd' | 'web' | 'robotics';
-  company: string;
+export interface JourneyStage {
+  stageNumber: number;
   period: string;
-  description: string;
-  keyLearnings: string[];
-  icon: string;
-}
-
-export interface ProjectMediaPlaceholder {
   title: string;
-  path: string;
-  description: string;
-  placeholderType: 'schematic' | 'ui' | 'machine' | 'code' | 'circuit';
+  items: string[];
 }
 
-export interface ProjectCaseStudy {
+export interface ProductDevProject {
   id: string;
   title: string;
-  category: 'hardware' | 'web' | 'embedded' | 'automation';
-  companyOrType: 'Symbian Vending Solutions' | 'Altius Infoway' | 'Personal Embedded Project';
-  role: string;
-  period: string;
-  summary: string;
-  problem: string;
-  solution: string;
-  hardwareSpecs?: string[];
-  softwareSpecs?: string[];
-  firmwareSpecs?: string[];
-  pcbSpecs?: string[];
-  protocols?: string[];
-  testingAndDebugging: string;
-  results: string[];
-  media: ProjectMediaPlaceholder[];
-  liveUrl?: string;
-  githubUrl?: string;
-  isFeatured: boolean;
-  isMissingDetails?: boolean;
+  type: string;
+  tools?: string;
+  description: string;
+  confirmedHardware?: string[];
+  responsibilities: string[];
+  imagePath: string;
+  disclaimer?: string;
 }
 
-export interface TechnicalSkill {
-  name: string;
-  description?: string;
-}
-
-export interface SkillDomain {
-  id: string;
+export interface KotlProjectDetails {
   title: string;
   subtitle: string;
-  icon: string;
-  skills: TechnicalSkill[];
+  status: string;
+  description: string;
+  hardware: string[];
+  firmware: string[];
+  currentFeatures: string[];
+  imagePath: string;
 }
 
-export interface WorkExperience {
-  company: string;
+export interface WebProjectItem {
+  id: string;
+  name: string;
+  category: 'corporate' | 'ecommerce' | 'erp';
+  categoryLabel: string;
+  liveUrl: string;
+  techStack: string[];
   role: string;
-  location: string;
-  period: string;
-  type: string;
-  progression?: string[];
-  summary: string;
-  responsibilities: string[];
-  technologies: string[];
+  frontendNote?: string;
+  features?: string[];
+  workScope?: string[];
+  description?: string;
+  isPersonallyDeveloped: boolean;
 }
 
-export interface EducationItem {
-  degree: string;
-  institution: string;
-  year: string;
-  location: string;
-  details: string;
+export interface ExperienceItem {
+  company: string;
+  period: string;
+  duration: string;
+  designation?: string;
+  teamSize?: string;
+  careerProgression: string[];
+  summary?: string;
+  responsibilities: string[];
+  contextNote?: string;
+}
+
+export interface SkillCategoryGroup {
+  category: string;
+  skills: string[];
 }

@@ -1,73 +1,57 @@
-import { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
-import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
-import { Skills } from './components/sections/Skills';
-import { Products } from './components/sections/Products';
-import { WebPlatforms } from './components/sections/WebPlatforms';
+import { About } from './components/sections/About';
 import { Journey } from './components/sections/Journey';
+import { ProductDevelopment } from './components/sections/ProductDevelopment';
+import { KotlProject } from './components/sections/KotlProject';
+import { WebDevelopment } from './components/sections/WebDevelopment';
 import { Experience } from './components/sections/Experience';
+import { Skills } from './components/sections/Skills';
+import { Resume } from './components/sections/Resume';
 import { Contact } from './components/sections/Contact';
-import { CaseStudyModal } from './components/modals/CaseStudyModal';
-import { projectCaseStudies } from './data/portfolioData';
-import { ProjectCaseStudy } from './types';
+import { Footer } from './components/layout/Footer';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<ProjectCaseStudy | null>(null);
-
-  // Initialize theme from user preference or system
-  useEffect(() => {
-    const isDark = localStorage.getItem('theme') === 'dark';
-    setDarkMode(isDark);
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  function toggleDarkMode() {
-    setDarkMode((prev) => {
-      const next = !prev;
-      if (next) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-      return next;
-    });
-  }
-
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors flex flex-col font-sans">
-      {/* Sticky Navigation Bar with Scroll Progress */}
-      <Navbar darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+      {/* Sticky Clean Navbar */}
+      <Navbar />
 
       {/* Main Content Sections */}
       <main className="flex-1">
+        {/* 1. Hero Section */}
         <Hero />
-        <Skills />
-        <Products
-          projects={projectCaseStudies}
-          onSelectProject={(proj) => setSelectedProject(proj)}
-        />
-        <WebPlatforms />
+
+        {/* 2. About / Engineering Philosophy */}
+        <About />
+
+        {/* 3. Engineering Journey (3 Stages) */}
         <Journey />
+
+        {/* 4. Product Development & Electronics */}
+        <ProductDevelopment />
+
+        {/* 5. Active Personal Project: KOTL Desktop AI Robot */}
+        <KotlProject />
+
+        {/* 6. Web Development & Client Projects (Filterable 20 verified websites) */}
+        <WebDevelopment />
+
+        {/* 7. Work Experience (Altius Infoway & Symbian Vending) */}
         <Experience />
+
+        {/* 8. Technical Skills (3 confirmed categories) */}
+        <Skills />
+
+        {/* 9. Resume & Technical Documentation */}
+        <Resume />
+
+        {/* 10. Contact / Direct Inquiry */}
         <Contact />
       </main>
 
       {/* Footer */}
       <Footer />
-
-      {/* Detail Case Study Modal */}
-      <CaseStudyModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </div>
   );
 }
