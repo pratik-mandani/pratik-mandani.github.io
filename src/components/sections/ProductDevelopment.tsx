@@ -1,131 +1,224 @@
 import { productDevProjects } from '../../data/portfolioData';
 
 export function ProductDevelopment() {
+  const [project1, project2, project3] = productDevProjects;
+
   return (
-    <section id="product-dev" className="py-14 sm:py-18 border-b border-slate-200 bg-slate-50/50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
-          Product Development &amp; Electronics
-        </h2>
-        <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-3xl leading-relaxed">
-          Hands-on product development across vending machines, power interface circuits, PCB prototyping, wiring, and operational machine integration.
-        </p>
+    <section id="product-dev" className="py-20 border-b border-slate-200 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
+            // 03 HARDWARE &amp; EMBEDDED R&amp;D
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            Product Development &amp; Electronics
+          </h2>
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Hands-on engineering in vending-machine manufacturing, custom PCB prototyping, power conversion, signal isolation, and commercial machine integration at Symbian Vending Solutions.
+          </p>
+        </div>
 
-        {/* 3 Project Cards Stack */}
-        <div className="space-y-8">
-          {productDevProjects.map((project) => (
-            <div
-              key={project.id}
-              className="p-5 sm:p-7 rounded-lg border border-slate-200 bg-white shadow-xs"
-            >
-              {/* Card Header: Type, Title, Tools */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
-                    {project.type}
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">
-                    {project.title}
-                  </h3>
+        <div className="space-y-16">
+          
+          {/* PROJECT 1: Reusable Vending Control Card (Image 55% LEFT, Content 45% RIGHT) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
+            
+            {/* Image (55% = 7 cols on lg) */}
+            <div className="lg:col-span-7">
+              <div className="img-frame aspect-16/10 relative flex items-center justify-center p-4 bg-slate-100">
+                <img
+                  src={project1.imagePath || '/images/pcb/control-card.svg'}
+                  alt={project1.title}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-mono font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                  SCHEMATIC // PROTEUS 8
                 </div>
+              </div>
+            </div>
 
-                {project.tools && (
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-slate-100 text-slate-700 border border-slate-200 self-start sm:self-auto">
-                    Tools: {project.tools}
-                  </span>
-                )}
+            {/* Content (45% = 5 cols on lg) */}
+            <div className="lg:col-span-5 space-y-4">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600">
+                  {project1.type}
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 mt-1">
+                  {project1.title}
+                </h3>
               </div>
 
-              {/* Description */}
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-5">
-                {project.description}
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                {project1.description}
               </p>
 
-              {/* Confirmed Hardware Architecture (for Project 2) */}
-              {project.confirmedHardware && (
-                <div className="mb-5 p-3.5 sm:p-4 rounded-md bg-slate-50 border border-slate-200 text-xs sm:text-sm">
-                  <span className="font-bold text-slate-900 block mb-2 uppercase tracking-wider text-[11px]">
-                    Confirmed Hardware Architecture
-                  </span>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
-                    {project.confirmedHardware.map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="text-blue-600 font-bold select-none">✓</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-xs">
+                <span className="font-bold text-slate-700 block mb-1 font-mono uppercase text-[11px]">
+                  Tooling &amp; Platform:
+                </span>
+                <span className="text-slate-600 font-medium">
+                  {project1.tools} • Modular Header Interfaces • Relay Drivers
+                </span>
+              </div>
 
               {/* Responsibilities */}
-              <div className="mb-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2 font-mono">
                   Key Responsibilities
                 </span>
-                <div className="flex flex-wrap gap-2">
-                  {project.responsibilities.map((resp, idx) => (
+                <div className="flex flex-wrap gap-1.5">
+                  {project1.responsibilities.map((resp, idx) => (
                     <span
                       key={idx}
-                      className="px-2.5 py-1 text-xs font-medium rounded bg-slate-100 text-slate-700 border border-slate-200"
+                      className="px-2.5 py-1 text-xs font-medium rounded-md bg-white text-slate-700 border border-slate-200"
                     >
                       {resp}
                     </span>
                   ))}
                 </div>
               </div>
+            </div>
 
-              {/* Role Disclaimer (for Project 3) */}
-              {project.disclaimer && (
-                <div className="p-3 sm:p-3.5 rounded bg-amber-50/80 border border-amber-200 text-xs text-amber-900 leading-relaxed mb-5">
-                  <span className="font-bold">Role Clarification: </span>
-                  {project.disclaimer}
+          </div>
+
+          {/* PROJECT 2: 24V–12V Coin Mechanism Interface (REVERSE: Content 45% LEFT, Image 55% RIGHT) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
+            
+            {/* Content (45% = 5 cols on lg, ordered first on desktop) */}
+            <div className="lg:col-span-5 space-y-4 order-2 lg:order-1">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600">
+                  {project2.type}
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 mt-1">
+                  {project2.title}
+                </h3>
+              </div>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                {project2.description}
+              </p>
+
+              {/* Confirmed Hardware */}
+              {project2.confirmedHardware && (
+                <div className="p-4 rounded-xl bg-white border border-slate-200 text-xs space-y-2">
+                  <span className="font-bold text-slate-800 block font-mono uppercase text-[11px]">
+                    Confirmed Hardware Architecture:
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700 font-medium">
+                    {project2.confirmedHardware.map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-1.5">
+                        <span className="text-emerald-600 font-bold">✓</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              {/* Image Gallery Area */}
-              <div className="pt-4 border-t border-slate-100">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Project Documentation Gallery
-                  </span>
-                  <span className="text-[11px] font-medium text-slate-400">
-                    4 Verification Slots
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {project.gallerySlots?.map((slot, sIdx) => (
-                    <div
-                      key={sIdx}
-                      className="p-3 rounded-md border border-dashed border-slate-200 bg-slate-50/70 flex flex-col items-center justify-center text-center min-h-[100px] sm:min-h-[110px]"
+              {/* Responsibilities */}
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2 font-mono">
+                  Key Responsibilities
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {project2.responsibilities.map((resp, idx) => (
+                    <span
+                      key={idx}
+                      className="px-2.5 py-1 text-xs font-medium rounded-md bg-white text-slate-700 border border-slate-200"
                     >
-                      <svg
-                        className="w-5 h-5 text-slate-400 mb-1.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="1.5"
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span className="text-xs font-semibold text-slate-800 leading-tight mb-1">
-                        {slot.label}
-                      </span>
-                      <span className="text-[10px] text-slate-400">
-                        Project images coming soon
-                      </span>
-                    </div>
+                      {resp}
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
-          ))}
+
+            {/* Image (55% = 7 cols on lg, ordered second on desktop) */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="img-frame aspect-16/10 relative flex items-center justify-center p-4 bg-slate-100">
+                <img
+                  src={project2.imagePath || '/images/pcb/coin-interface.svg'}
+                  alt={project2.title}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-mono font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                  CIRCUIT // OPTOCOUPLER ISOLATION
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* PROJECT 3: Touch / QR / Automatic Cup Vending (Full-Width Featured Layout) */}
+          <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all space-y-8">
+            
+            {/* Top: Large Featured Preview Area */}
+            <div className="img-frame w-full max-h-[360px] relative flex items-center justify-center p-6 bg-slate-100">
+              <img
+                src={project3.imagePath || '/images/vending/qr-system.svg'}
+                alt={project3.title}
+                className="w-full h-full max-h-[300px] object-contain"
+                loading="lazy"
+              />
+              <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-mono font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                SYSTEM INTEGRATION // COMMERCIAL MACHINES
+              </div>
+            </div>
+
+            {/* Bottom: Detailed Case & Responsibilities */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <div className="lg:col-span-7 space-y-4">
+                <div>
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600">
+                    {project3.type}
+                  </span>
+                  <h3 className="text-2xl font-bold text-slate-900 mt-1">
+                    {project3.title}
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  {project3.description}
+                </p>
+
+                {/* Explicit Disclaimer Alert */}
+                {project3.disclaimer && (
+                  <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 leading-relaxed flex items-start gap-3">
+                    <span className="font-bold text-amber-700 shrink-0 text-sm">ℹ</span>
+                    <div>
+                      <span className="font-bold">Role Clarification: </span>
+                      {project3.disclaimer}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="lg:col-span-5 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3 font-mono">
+                  Machine Integration Scope
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700 font-medium">
+                  {project3.responsibilities.map((resp, idx) => (
+                    <div key={idx} className="flex items-center gap-2 p-1.5 rounded bg-slate-50">
+                      <span className="text-blue-600 font-bold">•</span>
+                      <span>{resp}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
     </section>
   );

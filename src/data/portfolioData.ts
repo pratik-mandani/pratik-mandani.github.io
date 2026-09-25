@@ -118,7 +118,7 @@ export const productDevProjects: ProductDevProject[] = [
       { label: 'PCB Prototype' },
       { label: 'Installed Machine' },
     ],
-    imagePath: '',
+    imagePath: '/images/pcb/control-card.svg',
   },
   {
     id: 'coin-interface',
@@ -147,7 +147,7 @@ export const productDevProjects: ProductDevProject[] = [
       { label: 'PCB Prototype Board' },
       { label: 'Machine Integration Bench' },
     ],
-    imagePath: '',
+    imagePath: '/images/pcb/coin-interface.svg',
   },
   {
     id: 'vending-systems-integration',
@@ -173,7 +173,7 @@ export const productDevProjects: ProductDevProject[] = [
       { label: 'Touch & QR Interface Subsystem' },
       { label: 'Operational Testing & Validation' },
     ],
-    imagePath: '',
+    imagePath: '/images/vending/qr-system.svg',
   },
 ];
 
