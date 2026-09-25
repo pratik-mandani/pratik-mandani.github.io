@@ -115,92 +115,36 @@ export function Hero() {
 
           </div>
 
-          {/* Right Column: Subtle Editorial Circuit & System Schematic Visual (5 cols on lg) */}
+          {/* Right Column: Engineering Workstation Graphic (5 cols on lg) */}
           <div className="lg:col-span-5">
-            <div className="relative p-6 sm:p-8 rounded-3xl border border-slate-200/80 bg-slate-50/50 shadow-2xs overflow-hidden">
+            <div className="relative p-3 sm:p-4 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs overflow-hidden group">
               
               {/* Subtle Grid Underlay */}
-              <div className="absolute inset-0 bg-eng-grid opacity-40 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-eng-grid opacity-30 pointer-events-none"></div>
 
-              {/* Minimal Editorial Schematic Header */}
-              <div className="relative flex items-center justify-between pb-3 mb-6 border-b border-slate-200/80 text-[11px] font-mono text-slate-400">
+              {/* Minimal Header */}
+              <div className="relative flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/80 text-[11px] font-mono text-slate-500">
                 <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                  <span className="text-slate-700 font-semibold">FIG. 01 — SYSTEM ARCHITECTURE</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-slate-800 font-bold">ENGINEERING WORKSTATION</span>
                 </span>
-                <span>SCHEMATIC // REV 2.4</span>
+                <span className="text-slate-400">HARDWARE + FULL-STACK</span>
               </div>
 
-              {/* Clean SVG Circuit & Geometry Illustration */}
-              <div className="relative flex items-center justify-center py-2">
-                <svg
-                  viewBox="0 0 380 260"
-                  className="w-full h-auto text-slate-700"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Subtle alignment crosshairs */}
-                  <path d="M20 20 L30 20 M20 20 L20 30" stroke="#cbd5e1" strokeWidth="1" />
-                  <path d="M360 20 L350 20 M360 20 L360 30" stroke="#cbd5e1" strokeWidth="1" />
-                  <path d="M20 240 L30 240 M20 240 L20 230" stroke="#cbd5e1" strokeWidth="1" />
-                  <path d="M360 240 L350 240 M360 240 L360 230" stroke="#cbd5e1" strokeWidth="1" />
-
-                  {/* Central Engineering Hub Node */}
-                  <rect x="130" y="85" width="120" height="70" rx="8" fill="#ffffff" stroke="#2563eb" strokeWidth="1.5" />
-                  <text x="190" y="115" textAnchor="middle" fill="#0f172a" fontSize="11" fontFamily="JetBrains Mono, monospace" fontWeight="700">CORE ENGINE</text>
-                  <text x="190" y="132" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono, monospace">HARDWARE + WEB</text>
-
-                  {/* Top Left: Power Section (24V -> 12V) */}
-                  <rect x="30" y="30" width="85" height="42" rx="6" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
-                  <text x="72" y="48" textAnchor="middle" fill="#0f172a" fontSize="9" fontFamily="JetBrains Mono, monospace" fontWeight="600">PWR SECTION</text>
-                  <text x="72" y="61" textAnchor="middle" fill="#2563eb" fontSize="8" fontFamily="JetBrains Mono, monospace">24V → 12V DC</text>
-
-                  {/* Top Right: Full-Stack Web Platform */}
-                  <rect x="265" y="30" width="85" height="42" rx="6" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
-                  <text x="307" y="48" textAnchor="middle" fill="#0f172a" fontSize="9" fontFamily="JetBrains Mono, monospace" fontWeight="600">WEB PLATFORM</text>
-                  <text x="307" y="61" textAnchor="middle" fill="#2563eb" fontSize="8" fontFamily="JetBrains Mono, monospace">LARAVEL / SQL</text>
-
-                  {/* Bottom Left: Embedded MCU & Bus */}
-                  <rect x="30" y="170" width="85" height="42" rx="6" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
-                  <text x="72" y="188" textAnchor="middle" fill="#0f172a" fontSize="9" fontFamily="JetBrains Mono, monospace" fontWeight="600">EMBEDDED MCU</text>
-                  <text x="72" y="201" textAnchor="middle" fill="#2563eb" fontSize="8" fontFamily="JetBrains Mono, monospace">ESP32 / C++</text>
-
-                  {/* Bottom Right: Industrial R&D Testing */}
-                  <rect x="265" y="170" width="85" height="42" rx="6" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
-                  <text x="307" y="188" textAnchor="middle" fill="#0f172a" fontSize="9" fontFamily="JetBrains Mono, monospace" fontWeight="600">QA / QC VALIDATION</text>
-                  <text x="307" y="201" textAnchor="middle" fill="#2563eb" fontSize="8" fontFamily="JetBrains Mono, monospace">TESTING &amp; R&amp;D</text>
-
-                  {/* Connecting Traces with subtle engineering nodes */}
-                  {/* Power to Core */}
-                  <path d="M115 51 L150 51 L150 85" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <circle cx="115" cy="51" r="2.5" fill="#2563eb" />
-                  <circle cx="150" cy="85" r="2.5" fill="#2563eb" />
-
-                  {/* Web to Core */}
-                  <path d="M265 51 L230 51 L230 85" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <circle cx="265" cy="51" r="2.5" fill="#2563eb" />
-                  <circle cx="230" cy="85" r="2.5" fill="#2563eb" />
-
-                  {/* Embedded to Core */}
-                  <path d="M115 191 L150 191 L150 155" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <circle cx="115" cy="191" r="2.5" fill="#2563eb" />
-                  <circle cx="150" cy="155" r="2.5" fill="#2563eb" />
-
-                  {/* QA/QC to Core */}
-                  <path d="M265 191 L230 191 L230 155" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <circle cx="265" cy="191" r="2.5" fill="#2563eb" />
-                  <circle cx="230" cy="155" r="2.5" fill="#2563eb" />
-
-                  {/* Bus Labels */}
-                  <text x="190" y="70" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="JetBrains Mono, monospace">REST API // JSON</text>
-                  <text x="190" y="175" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="JetBrains Mono, monospace">I2C • I2S • GPIO</text>
-                </svg>
+              {/* Image Frame */}
+              <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-2xs">
+                <img
+                  src="/images/hero-workstation.webp"
+                  alt="Product Development and Full-Stack Engineering Workstation"
+                  className="w-full h-auto object-cover transform group-hover:scale-[1.015] transition-transform duration-300"
+                  loading="eager"
+                />
               </div>
 
-              {/* Minimal Engineering Footnote */}
-              <div className="relative mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span>COORD // RAJKOT, GUJARAT</span>
-                <span className="text-slate-600 font-medium">END-TO-END DOMAIN</span>
+              {/* Footnote */}
+              <div className="relative mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>MULTI-DISCIPLINE LAB</span>
+                <span className="text-blue-600 font-semibold">ELECTRONICS • FIRMWARE • WEB</span>
               </div>
 
             </div>
