@@ -13,12 +13,12 @@ import { Footer } from './components/layout/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden w-full max-w-full">
       {/* Sticky Clean Navbar */}
       <Navbar />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
+      <main className="flex-1 w-full overflow-x-hidden">
         {/* 1. Hero Section */}
         <Hero />
 

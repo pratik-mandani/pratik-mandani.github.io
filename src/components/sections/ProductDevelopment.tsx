@@ -85,26 +85,26 @@ export function ProductDevelopment() {
   }
 
   return (
-    <section id="product-dev" className="py-20 border-b border-slate-200 bg-white">
+    <section id="product-dev" className="py-14 sm:py-20 border-b border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
             // 03 HARDWARE &amp; EMBEDDED R&amp;D
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
             Product Development &amp; Electronics
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-600 leading-relaxed">
             Hands-on engineering in vending-machine manufacturing, custom PCB prototyping, power conversion, signal isolation, and commercial machine integration at Symbian Vending Solutions.
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           
           {/* PROJECT 1: Reusable Vending Control Card (Image 55% LEFT, Content 45% RIGHT) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center p-4 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
             
             {/* Gallery Area (55% = 7 cols on lg) */}
             <div className="lg:col-span-7">
@@ -156,7 +156,7 @@ export function ProductDevelopment() {
           </div>
 
           {/* PROJECT 2: 24V–12V Coin Mechanism Interface (REVERSE: Content 45% LEFT, Image 55% RIGHT) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center p-4 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all">
             
             {/* Content (45% = 5 cols on lg, ordered first on desktop) */}
             <div className="lg:col-span-5 space-y-4 order-2 lg:order-1">
@@ -216,19 +216,19 @@ export function ProductDevelopment() {
           </div>
 
           {/* PROJECT 3: Touch / QR / Automatic Cup Vending (Full-Width Featured Layout) */}
-          <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all space-y-8">
+          <div className="p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all space-y-6 sm:space-y-8">
 
             {/* Top: Real Machine Gallery (Side-by-Side on Desktop, Stacked on Mobile) */}
             <div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center justify-between">
+              <div className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span>VENDING SYSTEM DEVELOPMENT</span>
                 <span className="text-blue-600 font-semibold">REAL PROJECT PHOTOGRAPHY</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Image 1: Earlier Vending Machine Version */}
                 <div className="rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:border-slate-300 transition-all group">
-                  <div className="h-[360px] sm:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-3 overflow-hidden">
+                  <div className="h-[280px] sm:h-[380px] md:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-2 sm:p-3 overflow-hidden">
                     <img
                       src="/images/projects/vending-systems/earlier-vending-machine.webp"
                       alt="Earlier Vending Machine Version"
@@ -236,7 +236,7 @@ export function ProductDevelopment() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="mt-3 px-1 flex items-center justify-between text-xs font-mono text-slate-700">
+                  <div className="mt-3 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] sm:text-xs font-mono text-slate-700">
                     <span className="font-bold text-slate-900">Earlier Vending Machine Version</span>
                     <span className="text-[10px] text-slate-400">TOUCH INTERFACE</span>
                   </div>
@@ -244,7 +244,7 @@ export function ProductDevelopment() {
 
                 {/* Image 2: Automatic Cup Dispensing Version */}
                 <div className="rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:border-slate-300 transition-all group">
-                  <div className="h-[360px] sm:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-3 overflow-hidden">
+                  <div className="h-[280px] sm:h-[380px] md:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-2 sm:p-3 overflow-hidden">
                     <img
                       src="/images/projects/vending-systems/automatic-cup-vending-machine.webp"
                       alt="Automatic Cup Dispensing Version"
@@ -252,7 +252,7 @@ export function ProductDevelopment() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="mt-3 px-1 flex items-center justify-between text-xs font-mono text-slate-700">
+                  <div className="mt-3 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] sm:text-xs font-mono text-slate-700">
                     <span className="font-bold text-slate-900">Automatic Cup Dispensing Version</span>
                     <span className="text-[10px] text-slate-400">QR &amp; CUP DISPENSER</span>
                   </div>

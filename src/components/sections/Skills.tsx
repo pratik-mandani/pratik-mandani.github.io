@@ -23,15 +23,15 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 border-b border-slate-200 bg-white">
+    <section id="skills" className="py-14 sm:py-20 border-b border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
             // 07 TECHNICAL CAPABILITIES
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
             Technical Skills &amp; Domain Map
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -40,14 +40,14 @@ export function Skills() {
         </div>
 
         {/* 3 Visually Dense & Distinctive Groups */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {skillsCategories.map((group, idx) => {
             const meta = groupMeta[idx] || groupMeta[0];
 
             return (
               <div
                 key={idx}
-                className="p-6 sm:p-7 rounded-3xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between"
+                className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between"
               >
                 <div>
                   {/* Category Header Badge */}

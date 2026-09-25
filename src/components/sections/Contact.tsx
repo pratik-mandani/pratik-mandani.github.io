@@ -18,29 +18,29 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 border-b border-slate-200 bg-[#F8FAFC]">
+    <section id="contact" className="py-14 sm:py-20 border-b border-slate-200 bg-[#F8FAFC]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
             // 08 DIRECT ENGAGEMENT
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
             Get in Touch
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-600 leading-relaxed">
             Open to technical collaborations, embedded hardware R&amp;D, and senior full-stack web engineering roles.
           </p>
         </div>
 
         {/* 2-Column Split: Left Contact Details & Right Modern Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Left Column: Direct Communication Channels (5 cols on lg) */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                 Let&rsquo;s Build Something
               </h3>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-2">
@@ -130,8 +130,8 @@ export function Contact() {
 
           {/* Right Column: Clean Modern Form (7 cols on lg) */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-white shadow-xs">
-              <h4 className="text-xl font-bold text-slate-900 mb-6">
+            <div className="p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-xs">
+              <h4 className="text-lg sm:text-xl font-bold text-slate-900 mb-5 sm:mb-6">
                 Send an Inquiry
               </h4>
 

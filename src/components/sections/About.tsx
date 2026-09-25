@@ -30,7 +30,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 border-b border-slate-200 bg-white">
+    <section id="about" className="py-14 sm:py-20 border-b border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Tag */}
@@ -38,15 +38,15 @@ export function About() {
           // 01 ENGINEERING PROFILE &amp; PHILOSOPHY
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column: Heading & Editorial Paragraphs (7 cols) */}
           <div className="lg:col-span-7">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4 sm:mb-6">
               {aboutContent.heading}
             </h2>
 
-            <div className="space-y-5 text-base sm:text-lg text-slate-700 leading-relaxed">
+            <div className="space-y-4 sm:space-y-5 text-sm sm:text-lg text-slate-700 leading-relaxed">
               {aboutContent.paragraphs.map((p, idx) => (
                 <p key={idx} className="font-normal">
                   {p}
@@ -55,11 +55,11 @@ export function About() {
             </div>
 
             {/* Bottom Summary Callout */}
-            <div className="mt-8 p-5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 font-mono text-sm font-bold">
+            <div className="mt-6 sm:mt-8 p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start gap-3 sm:gap-4">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 font-mono text-xs sm:text-sm font-bold">
                 ✓
               </div>
-              <div className="text-sm text-slate-600 leading-relaxed">
+              <div className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 <span className="font-semibold text-slate-900">Dual Discipline Core:</span> Bridging physical machine electronics, production line assembly, and commercial-grade full-stack web software under one unified engineering mindset.
               </div>
             </div>
@@ -67,7 +67,7 @@ export function About() {
 
           {/* Right Column: "How I Work" / Engineering Evolution Process (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="p-6 sm:p-8 rounded-3xl bg-slate-50/70 border border-slate-200/80">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-50/70 border border-slate-200/80">
               <div className="flex items-center justify-between pb-3 mb-6 border-b border-slate-200 text-xs font-mono text-slate-500">
                 <span className="font-bold text-slate-900 tracking-wider uppercase">
                   ENGINEERING PROCESS FLOW

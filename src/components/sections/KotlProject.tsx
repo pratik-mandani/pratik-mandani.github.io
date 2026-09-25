@@ -2,15 +2,15 @@ import { kotlProjectData } from '../../data/portfolioData';
 
 export function KotlProject() {
   return (
-    <section id="kotl" className="py-20 border-b border-slate-200 bg-[#F8FAFC]">
+    <section id="kotl" className="py-14 sm:py-20 border-b border-slate-200 bg-[#F8FAFC]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-14">
+        <div className="max-w-3xl mb-10 sm:mb-14">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
             // 04 FEATURED PERSONAL PROJECT
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
             {kotlProjectData.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -19,8 +19,8 @@ export function KotlProject() {
         </div>
 
         {/* 55% Visual / 45% Information Desktop Split */}
-        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-white shadow-xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-xs">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
             
             {/* Left Column: Prominent KOTL Photograph (55% = 7 cols on lg) */}
             <div className="lg:col-span-7 space-y-3">

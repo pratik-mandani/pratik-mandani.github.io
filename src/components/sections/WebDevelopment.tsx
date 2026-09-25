@@ -17,40 +17,40 @@ export function WebDevelopment() {
   }, [filterCategory, searchQuery]);
 
   return (
-    <section id="projects" className="py-20 border-b border-slate-200 bg-white">
+    <section id="projects" className="py-14 sm:py-20 border-b border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-2">
             // 05 COMMERCIAL WEB ARCHITECTURE
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
             Web Development &amp; Client Projects
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-600 leading-relaxed">
             {webDevelopmentIntro}
           </p>
         </div>
 
         {/* 1. FEATURED PROJECTS: 2-COLUMN GRID WITH DOMINANT SCREENSHOTS */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-8 pb-3 border-b border-slate-200">
+        <div className="mb-14 sm:mb-20">
+          <div className="flex items-center justify-between mb-6 sm:mb-8 pb-3 border-b border-slate-200">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Featured Web Platforms
             </h3>
             <span className="text-xs font-mono text-slate-400">4 PRIMARY SHOWCASES</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
             {featuredWebProjects.map((project) => (
               <div
                 key={project.id}
-                className="group p-5 sm:p-6 rounded-3xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="group p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   {/* Dominant Large Screenshot (Visual Focus) */}
-                  <div className="img-frame aspect-16/10 mb-5 relative bg-slate-100 overflow-hidden shadow-2xs">
+                  <div className="img-frame aspect-16/10 mb-4 sm:mb-5 relative bg-slate-100 overflow-hidden shadow-2xs">
                     <img
                       src={project.imagePath}
                       alt={project.name}
@@ -156,35 +156,43 @@ export function WebDevelopment() {
             {filteredArchive.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:px-6 hover:bg-slate-50/80 transition-colors gap-2 group"
+                className="flex items-center justify-between p-3.5 sm:px-6 hover:bg-slate-50/80 transition-colors gap-2 group"
               >
-                {/* Left: Project Name */}
-                <div className="sm:w-1/3 flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
-                  <span className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">
-                    {item.name}
-                  </span>
+                {/* Left: Project Name & Mobile Subtext */}
+                <div className="flex-1 min-w-0 pr-2 sm:w-1/3 sm:flex-none">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                    <span className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors truncate">
+                      {item.name}
+                    </span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0 hidden sm:inline-block">
+                      {item.categoryLabel}
+                    </span>
+                  </div>
+                  <div className="sm:hidden text-[11px] font-mono text-slate-500 mt-0.5 truncate pl-3.5">
+                    <span className="text-slate-400 font-sans">{item.categoryLabel}</span> • {item.techStack.filter(t => ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'Tailwind CSS'].includes(t)).join(' / ') || 'Laravel / MySQL'}
+                  </div>
                 </div>
 
-                {/* Middle: Category */}
-                <div className="sm:w-1/4">
+                {/* Middle (Desktop only): Category */}
+                <div className="hidden sm:block sm:w-1/4">
                   <span className="text-xs text-slate-500 font-medium">
                     {item.categoryLabel}
                   </span>
                 </div>
 
-                {/* Technology */}
-                <div className="sm:w-1/3 text-xs font-mono text-slate-500">
+                {/* Technology (Desktop only) */}
+                <div className="hidden sm:block sm:w-1/3 text-xs font-mono text-slate-500">
                   {item.techStack.filter(t => ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'Tailwind CSS'].includes(t)).join(' / ') || 'Laravel / MySQL'}
                 </div>
 
                 {/* Right: Live Link */}
-                <div className="sm:w-24 text-left sm:text-right pt-1 sm:pt-0">
+                <div className="shrink-0 sm:w-24 text-right">
                   <a
                     href={item.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-0 sm:py-0 rounded-md sm:rounded-none bg-blue-50 sm:bg-transparent text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
                   >
                     <span>Live</span>
                     <span className="group-hover:translate-x-0.5 transition-transform">→</span>
