@@ -6,8 +6,8 @@ export function Hero() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Text & Hero Content (6 cols on lg) */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Column: Text & Hero Content (7 cols on lg) */}
+          <div className="lg:col-span-7 space-y-6">
             
             {/* System Status / Coordinate Badge */}
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-600 bg-slate-100 border border-slate-200">
@@ -40,16 +40,16 @@ export function Hero() {
             </p>
 
             {/* 4 Stats Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2">
               {personalInfo.stats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 transition-colors"
+                  className="p-3 sm:px-3.5 sm:py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 transition-colors"
                 >
-                  <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  <div className="text-lg sm:text-xl xl:text-2xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
                     {stat.value}
                   </div>
-                  <div className="text-xs font-medium text-slate-500 mt-0.5">
+                  <div className="text-xs font-medium text-slate-500 mt-0.5 whitespace-nowrap">
                     {stat.label}
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export function Hero() {
           </div>
 
           {/* Right Column: Large Mirrored Workstation Graphic (No Box) */}
-          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
             <div className="w-full max-w-md sm:max-w-lg lg:max-w-none">
               <img
                 src="/images/hero-workstation.webp"
