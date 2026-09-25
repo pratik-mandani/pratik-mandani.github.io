@@ -33,7 +33,7 @@ export function WebDevelopment() {
           </p>
         </div>
 
-        {/* 1. FEATURED PROJECTS: 2-COLUMN GRID WITH LARGE DOMINANT SCREENSHOTS */}
+        {/* 1. FEATURED PROJECTS: 2-COLUMN GRID WITH DOMINANT SCREENSHOTS */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8 pb-3 border-b border-slate-200">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
@@ -49,15 +49,15 @@ export function WebDevelopment() {
                 className="group p-5 sm:p-6 rounded-3xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
-                  {/* Dominant Large Screenshot */}
-                  <div className="img-frame aspect-16/10 mb-5 relative bg-slate-100 overflow-hidden">
+                  {/* Dominant Large Screenshot (Visual Focus) */}
+                  <div className="img-frame aspect-16/10 mb-5 relative bg-slate-100 overflow-hidden shadow-2xs">
                     <img
                       src={project.imagePath}
                       alt={project.name}
                       className="w-full h-full object-cover object-top"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-mono font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-mono font-bold text-slate-700 border border-slate-200 shadow-2xs">
                       {project.category}
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export function WebDevelopment() {
                       </div>
                     </div>
 
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-sm text-slate-600 leading-relaxed font-normal">
                       {project.description}
                     </p>
 
@@ -92,7 +92,7 @@ export function WebDevelopment() {
 
                 {/* Live Link Button */}
                 <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                  <span className="text-xs font-mono text-slate-400">PRODUCTION</span>
+                  <span className="text-[11px] font-mono text-slate-400">PRODUCTION DEPLOYMENT</span>
                   <a
                     href={project.liveUrl}
                     target="_blank"
@@ -111,82 +111,92 @@ export function WebDevelopment() {
           </div>
         </div>
 
-        {/* 2. PROJECT DIRECTORY / ARCHIVE (MORE PROJECTS) */}
+        {/* 2. PROJECT DIRECTORY / PROFESSIONAL ARCHIVE */}
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-slate-200">
             <div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                Project Directory &amp; Client Archive
+                Project Archive
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
                 Catalog of corporate, business, and e-commerce platforms personally developed and deployed.
               </p>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full sm:w-64">
+            {/* Filter Tabs & Search */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <div className="flex items-center gap-1 p-1 rounded-lg bg-slate-100 border border-slate-200 text-xs">
+                {['all', 'corporate', 'ecommerce'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setFilterCategory(cat)}
+                    className={`px-2.5 py-1 rounded-md capitalize font-medium transition-colors cursor-pointer ${
+                      filterCategory === cat
+                        ? 'bg-white text-blue-600 shadow-2xs font-bold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    {cat === 'all' ? 'All' : cat}
+                  </button>
+                ))}
+              </div>
+
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search archive by name/tech..."
-                className="w-full px-3.5 py-1.5 text-xs rounded-lg border border-slate-200 bg-slate-50/70 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:bg-white focus:ring-1 focus:ring-blue-500 font-mono"
+                placeholder="Search archive..."
+                className="w-full sm:w-48 px-3 py-1.5 text-xs rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:bg-white focus:ring-1 focus:ring-blue-500"
               />
             </div>
           </div>
 
-          {/* Clean Directory Table / List */}
-          <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-2xs">
-            
-            {/* Table Header (Hidden on small mobile) */}
-            <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-3 bg-slate-50 border-b border-slate-200 text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
-              <div className="col-span-4">Project Name</div>
-              <div className="col-span-3">Category</div>
-              <div className="col-span-3">Core Stack</div>
-              <div className="col-span-2 text-right">Live Link</div>
-            </div>
-
-            {/* Table Rows with Hover Effect */}
-            <div className="divide-y divide-slate-100 font-mono text-xs">
-              {filteredArchive.map((item) => (
-                <div
-                  key={item.id}
-                  className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-6 py-3.5 hover:bg-blue-50/40 transition-colors items-center group"
-                >
-                  <div className="sm:col-span-4 font-sans font-bold text-slate-900 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                    <span className="group-hover:text-blue-600 transition-colors">{item.name}</span>
-                  </div>
-
-                  <div className="sm:col-span-3 text-slate-500 font-sans">
-                    <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200">
-                      {item.categoryLabel}
-                    </span>
-                  </div>
-
-                  <div className="sm:col-span-3 text-slate-500 truncate text-[11px]">
-                    {item.techStack.join(' • ')}
-                  </div>
-
-                  <div className="sm:col-span-2 sm:text-right pt-1 sm:pt-0">
-                    <a
-                      href={item.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-bold transition-colors"
-                    >
-                      <span>Visit</span>
-                      <span>→</span>
-                    </a>
-                  </div>
+          {/* Clean Professional Project Archive Rows */}
+          <div className="border border-slate-200/90 rounded-2xl bg-white divide-y divide-slate-100 overflow-hidden shadow-2xs">
+            {filteredArchive.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:px-6 hover:bg-slate-50/80 transition-colors gap-2 group"
+              >
+                {/* Left: Project Name */}
+                <div className="sm:w-1/3 flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                  <span className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">
+                    {item.name}
+                  </span>
                 </div>
-              ))}
-            </div>
 
+                {/* Middle: Category */}
+                <div className="sm:w-1/4">
+                  <span className="text-xs text-slate-500 font-medium">
+                    {item.categoryLabel}
+                  </span>
+                </div>
+
+                {/* Technology */}
+                <div className="sm:w-1/3 text-xs font-mono text-slate-500">
+                  {item.techStack.filter(t => ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'Tailwind CSS'].includes(t)).join(' / ') || 'Laravel / MySQL'}
+                </div>
+
+                {/* Right: Live Link */}
+                <div className="sm:w-24 text-left sm:text-right pt-1 sm:pt-0">
+                  <a
+                    href={item.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <span>Live</span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="mt-4 text-center sm:text-left text-xs font-mono text-slate-400">
-            TOTAL VERIFIED DEPLOYMENTS: 100+ WEBSITES • SHOWING {filteredArchive.length} ARCHIVED ENTRIES
+          <div className="mt-4 text-xs font-mono text-slate-400 flex items-center justify-between px-1">
+            <span>SHOWING {filteredArchive.length} ARCHIVED PLATFORMS</span>
+            <span>100+ DEPLOYMENTS RECORDED</span>
           </div>
         </div>
 

@@ -67,38 +67,38 @@ export function About() {
 
           {/* Right Column: "How I Work" / Engineering Evolution Process (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 bg-slate-50/70 shadow-xs">
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-200">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 font-mono">
-                  Engineering Evolution
-                </h3>
-                <span className="text-xs font-mono text-slate-400">01 → 05</span>
+            <div className="p-6 sm:p-8 rounded-3xl bg-slate-50/70 border border-slate-200/80">
+              <div className="flex items-center justify-between pb-3 mb-6 border-b border-slate-200 text-xs font-mono text-slate-500">
+                <span className="font-bold text-slate-900 tracking-wider uppercase">
+                  ENGINEERING PROCESS FLOW
+                </span>
+                <span>01 → 05</span>
               </div>
 
-              {/* Numbered Process Steps */}
-              <div className="space-y-4">
+              {/* Numbered Process Steps with subtle connector line */}
+              <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
                 {steps.map((step) => (
-                  <div
-                    key={step.num}
-                    className="p-4 rounded-xl border border-slate-200/90 bg-white hover:border-blue-300 transition-colors shadow-2xs flex items-start gap-4"
-                  >
-                    <span className="font-mono text-base font-extrabold text-blue-600 shrink-0">
-                      {step.num}
-                    </span>
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900 mb-0.5">
+                  <div key={step.num} className="relative group">
+                    {/* Node Dot */}
+                    <span className="absolute -left-[27px] top-1.5 w-2 h-2 rounded-full bg-white border-2 border-blue-600"></span>
+
+                    <div className="flex items-baseline gap-2 mb-0.5">
+                      <span className="font-mono text-xs font-bold text-blue-600">
+                        {step.num}
+                      </span>
+                      <h4 className="text-sm font-bold text-slate-900">
                         {step.title}
                       </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        {step.desc}
-                      </p>
                     </div>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {step.desc}
+                    </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-400 font-mono">
-                <span>R&amp;D CADENCE</span>
+              <div className="mt-8 pt-4 border-t border-slate-200/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>R&amp;D DISCIPLINE</span>
                 <span className="text-slate-600 font-medium">END-TO-END VERIFIED</span>
               </div>
             </div>
