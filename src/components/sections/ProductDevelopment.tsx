@@ -4,10 +4,9 @@ import { productDevProjects } from '../../data/portfolioData';
 export function ProductDevelopment() {
   const [project1, project2, project3] = productDevProjects;
 
-  // Active gallery tabs for each project
+  // Active gallery tabs for project 1 and 2
   const [p1Tab, setP1Tab] = useState(0);
   const [p2Tab, setP2Tab] = useState(0);
-  const [p3Tab, setP3Tab] = useState(0);
 
   const p1Slots = [
     { label: 'Technical Schematic', type: 'schematic', path: project1.imagePath || '/images/pcb/control-card.svg' },
@@ -19,12 +18,6 @@ export function ProductDevelopment() {
     { label: 'Technical Schematic', type: 'schematic', path: project2.imagePath || '/images/pcb/coin-interface.svg' },
     { label: 'Power Section (LM2576)', type: 'coming_soon', detail: '24V to 12V DC step-down regulator board' },
     { label: 'Signal Isolation Module', type: 'coming_soon', detail: 'Optocoupler & relay interface stage' },
-  ];
-
-  const p3Slots = [
-    { label: 'System Overview', type: 'schematic', path: project3.imagePath || '/images/vending/qr-system.svg' },
-    { label: 'Machine Integration Bench', type: 'coming_soon', detail: 'Symbian assembly line & wiring harness' },
-    { label: 'Touch & QR Subsystem', type: 'coming_soon', detail: 'Touchscreen & QR payment validation unit' },
   ];
 
   function renderGalleryViewer(slots: typeof p1Slots, activeIdx: number, setActiveIdx: (i: number) => void) {
@@ -224,10 +217,47 @@ export function ProductDevelopment() {
 
           {/* PROJECT 3: Touch / QR / Automatic Cup Vending (Full-Width Featured Layout) */}
           <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-slate-50/50 shadow-xs hover:border-slate-300 transition-all space-y-8">
-            
-            {/* Top: Large Featured Preview Area with Gallery Slots */}
+
+            {/* Top: Real Machine Gallery (Side-by-Side on Desktop, Stacked on Mobile) */}
             <div>
-              {renderGalleryViewer(p3Slots, p3Tab, setP3Tab)}
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center justify-between">
+                <span>VENDING SYSTEM DEVELOPMENT</span>
+                <span className="text-blue-600 font-semibold">REAL PROJECT PHOTOGRAPHY</span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Image 1: Earlier Vending Machine Version */}
+                <div className="rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:border-slate-300 transition-all group">
+                  <div className="h-[360px] sm:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-3 overflow-hidden">
+                    <img
+                      src="/images/projects/vending-systems/earlier-vending-machine.webp"
+                      alt="Earlier Vending Machine Version"
+                      className="max-h-full max-w-full object-contain transform group-hover:scale-[1.015] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-3 px-1 flex items-center justify-between text-xs font-mono text-slate-700">
+                    <span className="font-bold text-slate-900">Earlier Vending Machine Version</span>
+                    <span className="text-[10px] text-slate-400">TOUCH INTERFACE</span>
+                  </div>
+                </div>
+
+                {/* Image 2: Automatic Cup Dispensing Version */}
+                <div className="rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:border-slate-300 transition-all group">
+                  <div className="h-[360px] sm:h-[420px] w-full flex items-center justify-center bg-slate-50 rounded-xl p-3 overflow-hidden">
+                    <img
+                      src="/images/projects/vending-systems/automatic-cup-vending-machine.webp"
+                      alt="Automatic Cup Dispensing Version"
+                      className="max-h-full max-w-full object-contain transform group-hover:scale-[1.015] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-3 px-1 flex items-center justify-between text-xs font-mono text-slate-700">
+                    <span className="font-bold text-slate-900">Automatic Cup Dispensing Version</span>
+                    <span className="text-[10px] text-slate-400">QR &amp; CUP DISPENSER</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Bottom: Detailed Case & Responsibilities */}
