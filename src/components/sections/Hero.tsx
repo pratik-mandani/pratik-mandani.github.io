@@ -4,10 +4,10 @@ export function Hero() {
   return (
     <section id="hero" className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Text & Hero Content (7 cols on lg) */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Text & Hero Content (6 cols on lg) */}
+          <div className="lg:col-span-6 space-y-6">
             
             {/* System Status / Coordinate Badge */}
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-600 bg-slate-100 border border-slate-200">
@@ -115,38 +115,15 @@ export function Hero() {
 
           </div>
 
-          {/* Right Column: Engineering Workstation Graphic (5 cols on lg) */}
-          <div className="lg:col-span-5">
-            <div className="relative p-3 sm:p-4 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs overflow-hidden group">
-              
-              {/* Subtle Grid Underlay */}
-              <div className="absolute inset-0 bg-eng-grid opacity-30 pointer-events-none"></div>
-
-              {/* Minimal Header */}
-              <div className="relative flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/80 text-[11px] font-mono text-slate-500">
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span className="text-slate-800 font-bold">ENGINEERING WORKSTATION</span>
-                </span>
-                <span className="text-slate-400">HARDWARE + FULL-STACK</span>
-              </div>
-
-              {/* Image Frame */}
-              <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-2xs">
-                <img
-                  src="/images/hero-workstation.webp"
-                  alt="Product Development and Full-Stack Engineering Workstation"
-                  className="w-full h-auto object-cover transform group-hover:scale-[1.015] transition-transform duration-300"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Footnote */}
-              <div className="relative mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span>MULTI-DISCIPLINE LAB</span>
-                <span className="text-blue-600 font-semibold">ELECTRONICS • FIRMWARE • WEB</span>
-              </div>
-
+          {/* Right Column: Large Mirrored Workstation Graphic (No Box) */}
+          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end">
+            <div className="w-full max-w-md sm:max-w-lg lg:max-w-none">
+              <img
+                src="/images/hero-workstation.webp"
+                alt="Product Development & Full-Stack Engineer Workstation"
+                className="w-full h-auto object-contain select-none drop-shadow-sm hover:scale-[1.015] transition-transform duration-300"
+                loading="eager"
+              />
             </div>
           </div>
 
