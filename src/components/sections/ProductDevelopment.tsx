@@ -9,9 +9,30 @@ export function ProductDevelopment() {
   const [p2Tab, setP2Tab] = useState(0);
 
   const p1Slots = [
-    { label: 'Technical Schematic', type: 'schematic', path: project1.imagePath || '/images/pcb/control-card.svg' },
-    { label: 'PCB Prototype', type: 'coming_soon', detail: 'Benchtop prototype board photography' },
-    { label: 'Installed Machine', type: 'coming_soon', detail: 'Field assembly & machine integration' },
+    {
+      label: 'Physical PCB Board',
+      type: 'image',
+      path: '/images/projects/vending-control-card/pcb-hardware-prototype.webp',
+      badgeTop: 'PHYSICAL HARDWARE // SYMBIAN',
+      badgeBottom: 'MANUFACTURED PCB',
+      bg: 'bg-slate-50',
+    },
+    {
+      label: 'CAD PCB Layout',
+      type: 'image',
+      path: '/images/projects/vending-control-card/proteus-pcb-layout.webp',
+      badgeTop: 'PROTEUS 8 // PCB LAYOUT',
+      badgeBottom: 'CAD TRACE & PINOUT ROUTING',
+      bg: 'bg-black',
+    },
+    {
+      label: '3D CAD Visualizer',
+      type: 'image',
+      path: '/images/projects/vending-control-card/proteus-3d-visualizer.webp',
+      badgeTop: 'PROTEUS 8 // 3D VISUALIZER',
+      badgeBottom: 'BOARD CONTOUR & SMT PADS',
+      bg: 'bg-[#e0dedf]',
+    },
   ];
 
   const p2Slots = [
@@ -20,26 +41,39 @@ export function ProductDevelopment() {
     { label: 'Signal Isolation Module', type: 'coming_soon', detail: 'Optocoupler & relay interface stage' },
   ];
 
-  function renderGalleryViewer(slots: typeof p1Slots, activeIdx: number, setActiveIdx: (i: number) => void) {
+  function renderGalleryViewer(
+    slots: Array<{
+      label: string;
+      type: string;
+      path?: string;
+      detail?: string;
+      badgeTop?: string;
+      badgeBottom?: string;
+      bg?: string;
+    }>,
+    activeIdx: number,
+    setActiveIdx: (i: number) => void
+  ) {
     const activeSlot = slots[activeIdx];
+    const frameBg = activeSlot.bg || 'bg-slate-50';
 
     return (
       <div className="space-y-3">
         {/* Main View Area */}
-        <div className="img-frame aspect-16/10 relative flex items-center justify-center p-4 bg-slate-50 border border-slate-200">
-          {activeSlot.type === 'schematic' ? (
+        <div className={`img-frame aspect-16/10 relative flex items-center justify-center p-2 sm:p-4 border border-slate-200 overflow-hidden transition-colors ${frameBg}`}>
+          {activeSlot.type === 'image' || activeSlot.type === 'schematic' ? (
             <div className="w-full h-full flex flex-col items-center justify-center relative">
               <img
                 src={activeSlot.path}
                 alt={activeSlot.label}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain select-none"
                 loading="lazy"
               />
-              <div className="absolute top-2 left-2 px-2.5 py-1 rounded bg-white/95 text-[10px] font-mono font-bold text-slate-700 border border-slate-200 shadow-2xs">
-                TECHNICAL SCHEMATIC // PROTEUS 8
+              <div className="absolute top-2 left-2 px-2.5 py-1 rounded bg-slate-900/85 backdrop-blur-xs text-[10px] font-mono font-bold text-white border border-slate-700 shadow-2xs">
+                {activeSlot.badgeTop || 'PROTEUS 8 // CAD'}
               </div>
-              <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-slate-900/80 text-[10px] font-mono font-medium text-white shadow-2xs">
-                ARCHIVED ILLUSTRATION
+              <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-slate-900/85 backdrop-blur-xs text-[10px] font-mono font-medium text-slate-300 border border-slate-700 shadow-2xs">
+                {activeSlot.badgeBottom || 'VERIFIED HARDWARE'}
               </div>
             </div>
           ) : (
@@ -133,6 +167,19 @@ export function ProductDevelopment() {
                 <span className="text-slate-600 font-medium">
                   {project1.tools} • Modular Header Interfaces • Relay Drivers
                 </span>
+              </div>
+
+              {/* Confirmed Hardware Silk Screen & Pinouts */}
+              <div className="p-3.5 rounded-xl bg-slate-100/70 border border-slate-200 text-xs space-y-1.5 font-mono">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 font-bold uppercase">
+                  <span>BOARD SPECIFICATIONS</span>
+                  <span className="text-blue-600 font-semibold">SYMBIAN // INFOTRONIX</span>
+                </div>
+                <div className="text-slate-700 text-xs space-y-1 font-sans">
+                  <div>• <strong>Silk Screen:</strong> SYMBIAN TEA VENDING SOLUTIONS ®</div>
+                  <div>• <strong>CAD Project:</strong> sy to cp convertor (Proteus 8 Professional)</div>
+                  <div>• <strong>Connector Pinouts:</strong> V1–V3 (Valves), W1–W3 (Water), G1–G3 (Grounds), HOT/FIL/HTR</div>
+                </div>
               </div>
 
               {/* Responsibilities */}

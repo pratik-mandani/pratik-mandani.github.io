@@ -104,7 +104,7 @@ export const productDevProjects: ProductDevProject[] = [
     type: 'PCB Prototype / Vending Machine',
     tools: 'Proteus 8',
     description:
-      'A small PCB prototype designed to make the vending control system adaptable across machines using common components and configurable connectors.',
+      'A custom converter and control interface PCB designed in Proteus 8 for Symbian tea vending systems, featuring multi-channel valve/heater connector blocks, relay interface routing, and custom form-factor contours.',
     responsibilities: [
       'PCB prototyping',
       'Connector configuration',
@@ -113,12 +113,11 @@ export const productDevProjects: ProductDevProject[] = [
       'Troubleshooting',
     ],
     gallerySlots: [
-      { label: 'PCB Front' },
-      { label: 'PCB Back' },
-      { label: 'PCB Prototype' },
-      { label: 'Installed Machine' },
+      { label: 'Physical PCB Board' },
+      { label: 'CAD PCB Layout' },
+      { label: '3D CAD Visualizer' },
     ],
-    imagePath: '/images/pcb/control-card.svg',
+    imagePath: '/images/projects/vending-control-card/pcb-hardware-prototype.webp',
   },
   {
     id: 'coin-interface',
