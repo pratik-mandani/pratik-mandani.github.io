@@ -125,12 +125,12 @@ export const productDevProjects: ProductDevProject[] = [
     type: 'PCB / Power & Interface Module',
     tools: 'Proteus 8',
     description:
-      'A custom interface module developed for integrating a 12V coin mechanism into a 24V vending-machine system.',
+      'A custom power conversion and signal isolation interface module developed for integrating a 12V coin validator mechanism into a 24V commercial vending-machine architecture.',
     confirmedHardware: [
-      'LM2576 power section',
-      '24V → 12V conversion',
-      'Relay for 12V switching/control',
-      'Optocoupler for signal isolation',
+      'LM2596 step-down DC-DC switching regulator (24V → 12V)',
+      'PC817 optocoupler for digital signal isolation',
+      '12V electromagnetic relay control & switching stage',
+      'SS34 Schottky diode & dual filter capacitors (470µF / 220µF)',
     ],
     responsibilities: [
       'Circuit design',
@@ -141,12 +141,11 @@ export const productDevProjects: ProductDevProject[] = [
       'Machine testing',
     ],
     gallerySlots: [
-      { label: 'Power Section (LM2576)' },
-      { label: 'Signal Isolation Section' },
-      { label: 'PCB Prototype Board' },
-      { label: 'Machine Integration Bench' },
+      { label: 'Physical Interface PCB' },
+      { label: 'CAD PCB Layout' },
+      { label: '3D CAD Visualizer' },
     ],
-    imagePath: '/images/pcb/coin-interface.svg',
+    imagePath: '/images/projects/coin-interface/coin-interface-pcb.webp',
   },
   {
     id: 'vending-systems-integration',

@@ -36,9 +36,30 @@ export function ProductDevelopment() {
   ];
 
   const p2Slots = [
-    { label: 'Technical Schematic', type: 'schematic', path: project2.imagePath || '/images/pcb/coin-interface.svg' },
-    { label: 'Power Section (LM2576)', type: 'coming_soon', detail: '24V to 12V DC step-down regulator board' },
-    { label: 'Signal Isolation Module', type: 'coming_soon', detail: 'Optocoupler & relay interface stage' },
+    {
+      label: 'Physical Interface PCB',
+      type: 'image',
+      path: '/images/projects/coin-interface/coin-interface-pcb.webp',
+      badgeTop: 'PHYSICAL HARDWARE // INFOTRONIX',
+      badgeBottom: 'MANUFACTURED MODULE',
+      bg: 'bg-slate-50',
+    },
+    {
+      label: 'CAD PCB Layout',
+      type: 'image',
+      path: '/images/projects/coin-interface/proteus-pcb-layout.webp',
+      badgeTop: 'PROTEUS 8 // PCB LAYOUT',
+      badgeBottom: '75.9mm × 55.2mm // NO DRC ERRORS',
+      bg: 'bg-black',
+    },
+    {
+      label: '3D CAD Visualizer',
+      type: 'image',
+      path: '/images/projects/coin-interface/proteus-3d-visualizer.webp',
+      badgeTop: 'PROTEUS 8 // 3D VISUALIZER',
+      badgeBottom: 'RELAY, LM2596 & TERMINALS',
+      bg: 'bg-[#e0dedf]',
+    },
   ];
 
   function renderGalleryViewer(
@@ -236,6 +257,19 @@ export function ProductDevelopment() {
                   </div>
                 </div>
               )}
+
+              {/* Confirmed Module Specifications */}
+              <div className="p-3.5 rounded-xl bg-slate-100/70 border border-slate-200 text-xs space-y-1.5 font-mono">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 font-bold uppercase">
+                  <span>MODULE SPECIFICATIONS</span>
+                  <span className="text-blue-600 font-semibold">INFOTRONIX // PROTEUS 8</span>
+                </div>
+                <div className="text-slate-700 text-xs space-y-1 font-sans">
+                  <div>• <strong>Board Footprint:</strong> 75.9mm × 55.2mm (Custom CNC profile &amp; corner mounting)</div>
+                  <div>• <strong>Active ICs:</strong> LM2596 (Step-Down Buck Regulator), PC817 Optocoupler</div>
+                  <div>• <strong>Terminals:</strong> V IN (24V), V OUT (12V), R IN / C SIN OUT (Relay control), GND</div>
+                </div>
+              </div>
 
               {/* Responsibilities */}
               <div>
