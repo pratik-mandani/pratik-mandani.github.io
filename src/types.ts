@@ -25,6 +25,12 @@ export interface ProductDevProject {
   disclaimer?: string;
 }
 
+export interface KotlPipelineStep {
+  step: string;
+  tech: string;
+  desc: string;
+}
+
 export interface KotlProjectDetails {
   title: string;
   subtitle: string;
@@ -32,7 +38,10 @@ export interface KotlProjectDetails {
   description: string;
   hardware: string[];
   firmware: string[];
+  backend?: string[];
+  aiStack?: string[];
   currentFeatures: string[];
+  pipelineFlow?: KotlPipelineStep[];
   imagePath?: string;
 }
 
