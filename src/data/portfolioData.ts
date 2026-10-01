@@ -177,10 +177,10 @@ export const productDevProjects: ProductDevProject[] = [
 
 export const kotlProjectData: KotlProjectDetails = {
   title: 'KOTL — The Smart Emotional Assistant Robot',
-  subtitle: 'Embedded AI Hardware • Node.js Backend • Free AI Voice Pipeline',
+  subtitle: 'Personal Embedded AI Hardware & Voice Pipeline Project',
   status: 'Active Personal Project',
   description:
-    'An interactive voice AI robot combining an ESP32 edge MCU with a Node.js backend, powered by free Google Gemini AI tokens, Groq Whisper STT, and local Piper neural TTS.',
+    'An interactive voice AI robot combining an ESP32 edge MCU with a Node.js web backend, powered by free Google Gemini AI tokens, Groq Whisper STT, and local Piper neural speech synthesis.',
   hardware: [
     'ESP32 Dual-Core (Wi-Fi)',
     'SSD1306 OLED (128x64)',
