@@ -45,6 +45,18 @@ export interface KotlProjectDetails {
   imagePath?: string;
 }
 
+export interface LighthouseAudit {
+  desktopScore: number;
+  mobileScore: number;
+  bestPractices: number;
+  seo: number;
+  fcp: string;
+  lcp: string;
+  tbt: string;
+  auditImageDesktop?: string;
+  auditImageMobile?: string;
+}
+
 export interface FeaturedWebProject {
   id: string;
   name: string;
@@ -57,6 +69,7 @@ export interface FeaturedWebProject {
   workScope?: string[];
   liveUrl: string;
   imagePath?: string;
+  lighthouse?: LighthouseAudit;
 }
 
 export interface WebProjectItem {

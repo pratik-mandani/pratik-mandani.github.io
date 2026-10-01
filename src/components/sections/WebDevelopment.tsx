@@ -1,9 +1,12 @@
 import { useState, useMemo } from 'react';
 import { featuredWebProjects, moreWebProjects, webDevelopmentIntro } from '../../data/portfolioData';
+import { FeaturedWebProject } from '../../types';
 
 export function WebDevelopment() {
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedAudit, setSelectedAudit] = useState<FeaturedWebProject | null>(null);
+  const [auditDevice, setAuditDevice] = useState<'desktop' | 'mobile'>('desktop');
 
   const filteredArchive = useMemo(() => {
     return moreWebProjects.filter((item) => {
@@ -87,6 +90,61 @@ export function WebDevelopment() {
                     <div className="text-xs font-semibold text-blue-600 font-mono">
                       Role: {project.role}
                     </div>
+
+                    {/* Verified Lighthouse Performance Audit Card */}
+                    {project.lighthouse && (
+                      <div className="mt-3 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-800">
+                              Lighthouse Audit
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedAudit(project);
+                              setAuditDevice('desktop');
+                            }}
+                            className="text-[11px] font-mono font-semibold text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1 cursor-pointer"
+                          >
+                            <span>View Report</span>
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-4 gap-1.5 text-center">
+                          <div className="p-1.5 rounded-lg bg-emerald-50/70 border border-emerald-200/70">
+                            <div className="text-xs sm:text-sm font-extrabold text-emerald-700 font-mono">
+                              {project.lighthouse.desktopScore}
+                            </div>
+                            <div className="text-[10px] font-mono text-emerald-800">Desktop</div>
+                          </div>
+                          <div className="p-1.5 rounded-lg bg-emerald-50/70 border border-emerald-200/70">
+                            <div className="text-xs sm:text-sm font-extrabold text-emerald-700 font-mono">
+                              {project.lighthouse.mobileScore}
+                            </div>
+                            <div className="text-[10px] font-mono text-emerald-800">Mobile</div>
+                          </div>
+                          <div className="p-1.5 rounded-lg bg-emerald-50/70 border border-emerald-200/70">
+                            <div className="text-xs sm:text-sm font-extrabold text-emerald-700 font-mono">
+                              {project.lighthouse.bestPractices}
+                            </div>
+                            <div className="text-[10px] font-mono text-emerald-800">Best Prac.</div>
+                          </div>
+                          <div className="p-1.5 rounded-lg bg-emerald-50/70 border border-emerald-200/70">
+                            <div className="text-xs sm:text-sm font-extrabold text-emerald-700 font-mono">
+                              {project.lighthouse.tbt}
+                            </div>
+                            <div className="text-[10px] font-mono text-emerald-800">0ms Block</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -110,6 +168,89 @@ export function WebDevelopment() {
             ))}
           </div>
         </div>
+
+        {/* Lighthouse Modal Report Viewer */}
+        {selectedAudit && selectedAudit.lighthouse && (
+          <div
+            className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+            onClick={() => setSelectedAudit(null)}
+          >
+            <div
+              className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="px-4 sm:px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/90">
+                <div>
+                  <div className="text-[10px] font-mono uppercase font-bold text-blue-600">
+                    GOOGLE LIGHTHOUSE PERFORMANCE REPORT
+                  </div>
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900">
+                    {selectedAudit.name} — Verified Speed &amp; Optimization
+                  </h4>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedAudit(null)}
+                  className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+                  aria-label="Close report modal"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Device Tab Selector */}
+              <div className="px-4 sm:px-6 py-2.5 bg-white border-b border-slate-100 flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setAuditDevice('desktop')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+                      auditDevice === 'desktop'
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    🖥️ Desktop ({selectedAudit.lighthouse.desktopScore}/100)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAuditDevice('mobile')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+                      auditDevice === 'mobile'
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    📱 Mobile ({selectedAudit.lighthouse.mobileScore}/100)
+                  </button>
+                </div>
+
+                <div className="hidden sm:flex items-center gap-3 text-[11px] font-mono text-slate-500">
+                  <span>FCP: <strong className="text-emerald-600">{selectedAudit.lighthouse.fcp}</strong></span>
+                  <span>LCP: <strong className="text-emerald-600">{selectedAudit.lighthouse.lcp}</strong></span>
+                  <span>TBT: <strong className="text-emerald-600">{selectedAudit.lighthouse.tbt}</strong></span>
+                </div>
+              </div>
+
+              {/* Screenshot Viewer Area */}
+              <div className="p-3 sm:p-5 overflow-y-auto max-h-[calc(90vh-140px)] flex items-center justify-center bg-slate-100/60">
+                <img
+                  src={
+                    auditDevice === 'desktop'
+                      ? selectedAudit.lighthouse.auditImageDesktop
+                      : selectedAudit.lighthouse.auditImageMobile
+                  }
+                  alt={`${selectedAudit.name} Lighthouse Audit`}
+                  className="max-w-full max-h-full rounded-xl border border-slate-200 shadow-sm object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* 2. PROJECT DIRECTORY / PROFESSIONAL ARCHIVE */}
         <div>

@@ -236,6 +236,17 @@ export const featuredWebProjects: FeaturedWebProject[] = [
     features: ['Product CRUD', 'Cart', 'Order Management'],
     liveUrl: 'http://thebusa.com/',
     imagePath: '/images/projects/websites/thebusa.webp',
+    lighthouse: {
+      desktopScore: 99,
+      mobileScore: 93,
+      bestPractices: 100,
+      seo: 91,
+      fcp: '0.6s',
+      lcp: '0.9s',
+      tbt: '0ms',
+      auditImageDesktop: '/images/projects/websites/busa-lighthouse-desktop.webp',
+      auditImageMobile: '/images/projects/websites/busa-lighthouse-mobile.webp',
+    },
   },
   {
     id: 'networkkitchenware',
