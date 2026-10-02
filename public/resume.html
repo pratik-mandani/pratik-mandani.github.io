@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pratik Mandani — Resume</title>
-  <meta name="description" content="Resume of Pratik Mandani, Product Development & Full-Stack Engineer with 7 years of experience.">
+  <meta name="description" content="Resume of Pratik Mandani, Product Development & Full-Stack Engineer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0f172a;
-      --secondary: #334155;
-      --accent: #2563eb;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent: #1e40af;
+      --border: #e5e7eb;
+      --rule: #111827;
       --bg: #ffffff;
-      --tag-bg: #f1f5f9;
     }
 
     * {
@@ -26,34 +25,33 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: var(--primary);
-      background-color: #f8fafc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      background-color: #f3f4f6;
       line-height: 1.45;
       font-size: 13px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Floating Toolbar (Hidden during print) */
+    /* Floating Navigation Toolbar (Screen Only) */
     .toolbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(8px);
+      background: #111827;
       color: #ffffff;
       padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .toolbar-title {
       font-size: 13px;
-      font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
-      color: #93c5fd;
+      color: #e5e7eb;
+      letter-spacing: 0.02em;
     }
 
     .toolbar-actions {
@@ -66,14 +64,14 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 7px 14px;
+      border-radius: 6px;
       font-size: 12px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.2s ease;
-      border: none;
+      transition: background 0.15s ease;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
@@ -85,79 +83,76 @@
     }
 
     .btn-secondary {
-      background: #334155;
-      color: #f8fafc;
+      background: #374151;
+      color: #f9fafb;
+      border-color: #4b5563;
     }
     .btn-secondary:hover {
-      background: #475569;
+      background: #4b5563;
     }
 
-    /* Resume Document Container */
+    /* Document Sheet */
     .resume-wrapper {
-      max-width: 820px;
-      margin: 24px auto 48px;
+      max-width: 800px;
+      margin: 28px auto 48px;
       background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px 48px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 44px 52px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     /* Header */
     .header {
-      border-bottom: 2px solid #0f172a;
-      padding-bottom: 16px;
-      margin-bottom: 18px;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--rule);
     }
 
     .name {
       font-size: 26px;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #0f172a;
-      line-height: 1.1;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
-    .target-title {
-      font-size: 14px;
+    .title-role {
+      font-size: 13.5px;
       font-weight: 700;
-      color: #2563eb;
+      color: var(--accent);
       margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
     }
 
-    .specialization {
+    .title-sub {
       font-size: 12px;
       font-weight: 500;
-      color: #475569;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .contact-info {
+    .contact-line {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 18px;
+      align-items: center;
+      gap: 6px 14px;
       font-size: 11.5px;
-      color: #475569;
+      color: var(--text-muted);
       margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
     }
 
-    .contact-info a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 500;
+    .contact-line span:not(:last-child)::after {
+      content: "•";
+      margin-left: 14px;
+      color: #9ca3af;
     }
-    .contact-info a:hover {
+
+    .contact-line a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-line a:hover {
       text-decoration: underline;
     }
 
@@ -168,185 +163,137 @@
 
     .section-title {
       font-size: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #0f172a;
-      border-bottom: 1px solid #cbd5e1;
-      padding-bottom: 4px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 12px;
-      background: #2563eb;
-      border-radius: 2px;
+      color: var(--text-main);
+      padding-bottom: 3px;
+      margin-bottom: 9px;
+      border-bottom: 1px solid #9ca3af;
     }
 
     /* Summary */
     .summary-text {
-      color: #334155;
-      font-size: 12.5px;
+      font-size: 12px;
+      color: #374151;
       line-height: 1.55;
+      text-align: justify;
     }
 
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 6px;
+    /* Skills Table */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 12px;
     }
 
-    .skill-row {
-      display: flex;
-      line-height: 1.4;
+    .skills-table td {
+      padding: 3px 0;
+      vertical-align: top;
+      line-height: 1.45;
     }
 
-    .skill-category {
+    .skills-table .label {
+      width: 160px;
       font-weight: 700;
-      color: #0f172a;
-      width: 170px;
-      flex-shrink: 0;
-      font-size: 11.5px;
-      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-main);
+      padding-right: 12px;
     }
 
-    .skill-list {
-      color: #334155;
-      flex: 1;
+    .skills-table .val {
+      color: #374151;
     }
 
     /* Experience */
-    .job {
-      margin-bottom: 14px;
+    .item-block {
+      margin-bottom: 13px;
     }
-
-    .job:last-child {
+    .item-block:last-child {
       margin-bottom: 0;
     }
 
-    .job-header {
+    .item-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 2px;
     }
 
-    .job-title {
-      font-size: 13.5px;
+    .item-title {
+      font-size: 13px;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--text-main);
     }
 
-    .company {
-      color: #2563eb;
+    .item-org {
       font-weight: 600;
+      color: var(--accent);
     }
 
-    .job-meta {
+    .item-date {
       font-size: 11.5px;
-      font-family: 'JetBrains Mono', monospace;
-      color: #64748b;
+      color: var(--text-muted);
       font-weight: 500;
+      text-align: right;
     }
 
+    .item-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+
+    /* Bullet Points */
     .bullet-list {
       list-style-type: none;
       padding-left: 0;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .bullet-list li {
       position: relative;
       padding-left: 14px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       font-size: 12px;
-      color: #334155;
-      line-height: 1.5;
+      color: #374151;
+      line-height: 1.48;
     }
 
     .bullet-list li::before {
-      content: '•';
+      content: "–";
       position: absolute;
-      left: 2px;
-      color: #2563eb;
-      font-weight: bold;
-    }
-
-    /* Projects */
-    .project-item {
-      margin-bottom: 12px;
-    }
-    .project-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .project-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .project-tech {
-      font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
-      color: #64748b;
-    }
-
-    .metric-badge {
-      display: inline-block;
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 10.5px;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-      margin-left: 6px;
+      left: 0;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
     /* Education */
-    .edu-item {
+    .edu-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
     }
 
-    .degree {
+    .edu-degree {
       font-size: 13px;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--text-main);
     }
 
-    .institution {
-      color: #475569;
+    .edu-school {
       font-size: 12px;
-      margin-top: 2px;
+      color: #374151;
+      margin-top: 1px;
     }
 
     .edu-year {
       font-size: 11.5px;
-      font-family: 'JetBrains Mono', monospace;
-      color: #64748b;
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
-    /* Print Styles for Identical Pixel-Perfect PDF Export */
+    /* Print Styles (Exact Identical 2-Page A4 PDF) */
     @media print {
       body {
         background-color: #ffffff;
@@ -367,15 +314,14 @@
 
       @page {
         size: A4 portrait;
-        margin: 12mm 14mm 12mm 14mm;
+        margin: 12mm 15mm 12mm 15mm;
       }
 
       .section {
-        margin-bottom: 14px;
-        page-break-inside: avoid;
+        margin-bottom: 13px;
       }
 
-      .job, .project-item {
+      .item-block {
         page-break-inside: avoid;
       }
     }
@@ -383,46 +329,37 @@
 </head>
 <body>
 
-  <!-- Floating Navigation Toolbar (Screen Only) -->
+  <!-- Floating Navigation Toolbar (Hidden on Print/PDF) -->
   <div class="toolbar no-print">
-    <div class="toolbar-title">PRATIK_MANDANI_RESUME.PDF // ATS-COMPLIANT</div>
+    <div class="toolbar-title">PRATIK MANDANI — RESUME</div>
     <div class="toolbar-actions">
       <a href="/" class="btn btn-secondary">
-        ← Back to Portfolio
+        Back to Portfolio
       </a>
       <a href="/resume/Pratik_Mandani.pdf" download="Pratik_Mandani.pdf" class="btn btn-secondary">
-        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-        </svg>
-        Download PDF File
+        Download PDF
       </a>
       <button onclick="window.print()" class="btn btn-primary">
-        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-        </svg>
         Print / Save to PDF
       </button>
     </div>
   </div>
 
-  <!-- ATS-Compliant Clean Resume Document -->
+  <!-- Clean ATS-Compliant Resume Container -->
   <main class="resume-wrapper">
 
     <!-- Header Section -->
     <header class="header">
-      <div class="header-top">
-        <div>
-          <h1 class="name">PRATIK MANDANI</h1>
-          <div class="target-title">Product Development &amp; Full-Stack Engineer</div>
-          <div class="specialization">Web Architecture (PHP / Laravel / Node.js) • Embedded Firmware &amp; IoT (ESP32 / C/C++)</div>
-        </div>
-      </div>
-      <div class="contact-info">
-        <span>📍 Rajkot, Gujarat, India</span>
-        <span>✉️ <a href="mailto:pratikmandani61508@gmail.com">pratikmandani61508@gmail.com</a></span>
-        <span>🌐 <a href="https://pratik-mandani.github.io" target="_blank">pratik-mandani.github.io</a></span>
-        <span>🔗 <a href="https://www.linkedin.com/in/pratik-mandani" target="_blank">linkedin.com/in/pratik-mandani</a></span>
-        <span>💻 <a href="https://github.com/pratik-mandani" target="_blank">github.com/pratik-mandani</a></span>
+      <h1 class="name">PRATIK MANDANI</h1>
+      <div class="title-role">PRODUCT DEVELOPMENT &amp; FULL-STACK ENGINEER</div>
+      <div class="title-sub">Web Architecture (PHP / Laravel) • Embedded Systems &amp; Firmware (ESP32 / C/C++)</div>
+      
+      <div class="contact-line">
+        <span>Rajkot, Gujarat, India</span>
+        <span><a href="mailto:pratikmandani61508@gmail.com">pratikmandani61508@gmail.com</a></span>
+        <span><a href="https://pratik-mandani.github.io" target="_blank">pratik-mandani.github.io</a></span>
+        <span><a href="https://www.linkedin.com/in/pratik-mandani" target="_blank">linkedin.com/in/pratik-mandani</a></span>
+        <span><a href="https://github.com/pratik-mandani" target="_blank">github.com/pratik-mandani</a></span>
       </div>
     </header>
 
@@ -437,61 +374,59 @@
     <!-- Technical Skills -->
     <section class="section">
       <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <span class="skill-category">Web &amp; Backend:</span>
-          <span class="skill-list">PHP, Laravel, Node.js, Express.js, MySQL, RESTful APIs, MVC Architecture, Database Design</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Frontend &amp; UI:</span>
-          <span class="skill-list">JavaScript (ES6+), Tailwind CSS, Bootstrap, HTML5, CSS3, Responsive Design, Figma to Code</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Embedded &amp; Firmware:</span>
-          <span class="skill-list">ESP32 Dual-Core, C/C++, Arduino IDE, ESP-IDF, I2C, I2S DMA, ADC, GPIO, LittleFS, State Machines</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">AI &amp; Audio Pipelines:</span>
-          <span class="skill-list">Google Gemini (Free API Tokens), Groq LLaMA 3.3, Groq Whisper-v3 STT, Piper Neural TTS (ONNX), FFmpeg</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Hardware &amp; Electronics:</span>
-          <span class="skill-list">Proteus 8 CAD, PCB Assembly, Wire Harnessing, LM2596 Regulators, PC817 Optocouplers, Testing</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Tools &amp; Optimization:</span>
-          <span class="skill-list">Core Web Vitals, Google Lighthouse (99 Desktop / 93 Mobile), Git, GitHub, Linux, Apache</span>
-        </div>
-      </div>
+      <table class="skills-table">
+        <tbody>
+          <tr>
+            <td class="label">Web &amp; Backend</td>
+            <td class="val">PHP, Laravel, Node.js, Express.js, MySQL, RESTful APIs, MVC Architecture, Database Design</td>
+          </tr>
+          <tr>
+            <td class="label">Frontend &amp; UI</td>
+            <td class="val">JavaScript, Tailwind CSS, Bootstrap, HTML5, CSS3, Responsive Design, Figma to Code</td>
+          </tr>
+          <tr>
+            <td class="label">Embedded &amp; Firmware</td>
+            <td class="val">ESP32 Dual-Core, C/C++, Arduino IDE, ESP-IDF, I2C, I2S DMA, ADC, GPIO, LittleFS, State Machines</td>
+          </tr>
+          <tr>
+            <td class="label">AI &amp; Speech Pipelines</td>
+            <td class="val">Google Gemini (Free API Tokens), Groq LLaMA 3.3, Groq Whisper-v3 STT, Piper Neural TTS (ONNX), FFmpeg</td>
+          </tr>
+          <tr>
+            <td class="label">Hardware &amp; Electronics</td>
+            <td class="val">Proteus 8 CAD, PCB Assembly, Wire Harnessing, LM2596 Regulators, PC817 Optocouplers, Testing</td>
+          </tr>
+          <tr>
+            <td class="label">Tools &amp; Optimization</td>
+            <td class="val">Core Web Vitals, Google Lighthouse (99 Desktop / 93 Mobile), Git, GitHub, Linux, Apache</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <!-- Professional Experience -->
     <section class="section">
       <h2 class="section-title">Professional Experience</h2>
 
-      <!-- Job 1 -->
-      <article class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">Full-Stack Web Developer</span> — <span class="company">Altius Infoway</span>
-          </div>
-          <span class="job-meta">May 2022 – Present (4 Years)</span>
+      <!-- Altius Infoway -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">Full-Stack Web Developer — <span class="item-org">Altius Infoway</span></span>
+          <span class="item-date">May 2022 – Present (4 Years)</span>
         </div>
         <ul class="bullet-list">
           <li>Architected and deployed <strong>over 100 websites and web applications</strong> across corporate, business, e-commerce, and management applications with Laravel and MySQL.</li>
           <li>Directed hands-on frontend styling, custom Laravel development, database integration, maintenance, and production deployment.</li>
-          <li>Built role-based administrative panels, CRM lead tracking modules, and secure checkout workflows for enterprise clients.</li>
+          <li>Built role-based administrative panels, CRM lead tracking modules, and secure checkout workflows.</li>
           <li>Audited and tuned Core Web Vitals to achieve a verified <strong>99/100 Desktop</strong> and <strong>93/100 Mobile</strong> Lighthouse Performance score with <strong>0ms Total Blocking Time</strong>.</li>
         </ul>
       </article>
 
-      <!-- Job 2 -->
-      <article class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">Product Development &amp; Electronics Engineer</span> — <span class="company">Symbian Vending Solutions</span>
-          </div>
-          <span class="job-meta">Nov 2018 – Mar 2022 (3 Years)</span>
+      <!-- Symbian Vending Solutions -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">Product Development &amp; Electronics Engineer — <span class="item-org">Symbian Vending Solutions</span></span>
+          <span class="item-date">Nov 2018 – Mar 2022 (3 Years)</span>
         </div>
         <ul class="bullet-list">
           <li>Executed machine assembly, internal wiring, harness fabrication, and hardware integration for commercial beverage and cup-dispensing vending machines.</li>
@@ -506,74 +441,64 @@
     <section class="section">
       <h2 class="section-title">Key Projects &amp; Hardware Implementations</h2>
 
-      <!-- Project 1 -->
-      <div class="project-item">
-        <div class="project-header">
-          <div>
-            <span class="project-name">The Busa</span> — Fashion Brand E-Commerce Platform
-            <span class="metric-badge">99/100 LIGHTHOUSE • 0MS BLOCKING</span>
-          </div>
-          <span class="project-tech">Laravel • MySQL • JavaScript</span>
+      <!-- The Busa -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">The Busa — Fashion Brand E-Commerce Platform</span>
+          <span class="item-date">Laravel • MySQL • JavaScript</span>
         </div>
         <ul class="bullet-list">
-          <li>Engineered full e-commerce solution featuring product catalog, shopping cart, and order management with fluid responsiveness.</li>
-          <li>Optimized asset pipelines and caching to achieve <strong>99 Desktop / 93 Mobile Performance</strong>, 100 Best Practices, and 0ms TBT.</li>
-          <li>Live URL: <a href="http://thebusa.com/" target="_blank" style="color: #2563eb; text-decoration: none;">thebusa.com</a></li>
+          <li>Engineered full e-commerce platform with product catalog, cart system, and order management.</li>
+          <li>Optimized asset delivery and caching to achieve verified <strong>99 Desktop / 93 Mobile Lighthouse Score</strong> with 100 Best Practices and 0ms TBT.</li>
+          <li>Live: <a href="http://thebusa.com/" target="_blank" style="color: var(--accent); text-decoration: none;">thebusa.com</a></li>
         </ul>
-      </div>
+      </article>
 
-      <!-- Project 2 -->
-      <div class="project-item">
-        <div class="project-header">
-          <div>
-            <span class="project-name">KOTL Assistant Robot</span> — Desktop AI Voice Robot
-            <span class="metric-badge">ACTIVE EMBEDDED AI</span>
-          </div>
-          <span class="project-tech">ESP32 • Node.js • Free Gemini AI • Whisper • Piper TTS</span>
+      <!-- KOTL Robot -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">KOTL Assistant Robot — Desktop AI Voice Robot</span>
+          <span class="item-date">ESP32 • Node.js • Gemini AI • Whisper • Piper</span>
         </div>
         <ul class="bullet-list">
           <li>Built real-time conversational robot connecting ESP32 edge hardware with a Node.js REST backend over Wi-Fi HTTP.</li>
-          <li>Implemented 8kHz PCM voice capture (MAX9814 AGC Mic), multilingual Groq Whisper-v3 STT, free Google Gemini AI dialogue reasoning, and local Piper neural TTS (16kHz WAV) streamed to a MAX98357A I2S DAC amp while animating OLED RoboEyes expressions.</li>
+          <li>Implemented 8kHz PCM voice capture (MAX9814 AGC Mic), multilingual Groq Whisper-v3 STT, free Google Gemini AI dialogue reasoning, and local Piper neural TTS (16kHz WAV) streamed to a MAX98357A I2S DAC amp with synced OLED RoboEyes facial expressions.</li>
         </ul>
-      </div>
+      </article>
 
-      <!-- Project 3 -->
-      <div class="project-item">
-        <div class="project-header">
-          <div>
-            <span class="project-name">Diamorivo</span> — Luxury Fine Jewelry E-Commerce
-          </div>
-          <span class="project-tech">Laravel • MySQL • Tailwind CSS</span>
+      <!-- Diamorivo -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">Diamorivo — Luxury Fine Jewelry E-Commerce</span>
+          <span class="item-date">Laravel • MySQL • Tailwind CSS</span>
         </div>
         <ul class="bullet-list">
           <li>Implemented high-converting jewelry catalog and checkout workflow from Figma designs, ensuring complete mobile responsiveness.</li>
-          <li>Live URL: <a href="https://diamorivo.com/" target="_blank" style="color: #2563eb; text-decoration: none;">diamorivo.com</a></li>
+          <li>Live: <a href="https://diamorivo.com/" target="_blank" style="color: var(--accent); text-decoration: none;">diamorivo.com</a></li>
         </ul>
-      </div>
+      </article>
 
-      <!-- Project 4 -->
-      <div class="project-item">
-        <div class="project-header">
-          <div>
-            <span class="project-name">Commercial Vending Machine Electronics &amp; Subsystems</span>
-          </div>
-          <span class="project-tech">Proteus 8 CAD • Power Regulation • Relay Driver</span>
+      <!-- Vending Machine Hardware -->
+      <article class="item-block">
+        <div class="item-head">
+          <span class="item-title">Commercial Vending Machine Electronics &amp; Subsystems</span>
+          <span class="item-date">Proteus 8 CAD • Power Regulation • Relays</span>
         </div>
         <ul class="bullet-list">
           <li><strong>Reusable Control Card:</strong> Standardized multi-recipe dispensing across diverse tea/coffee machine models.</li>
           <li><strong>24V–12V Coin Interface Module:</strong> LM2596 step-down regulation with PC817 optocoupler isolation to protect control lines.</li>
-          <li><strong>Automatic Cup Dispensing:</strong> Validated motor actuators, touch interfaces, and QR payment integration under load.</li>
+          <li><strong>Automatic Cup Dispensing:</strong> Validated motor actuators, touch interfaces, and QR payment integration under operational load.</li>
         </ul>
-      </div>
+      </article>
     </section>
 
     <!-- Education -->
     <section class="section">
       <h2 class="section-title">Education</h2>
-      <div class="edu-item">
+      <div class="edu-row">
         <div>
-          <div class="degree">Diploma in Electronics &amp; Communication Engineering (EC)</div>
-          <div class="institution">Government Polytechnic, Rajkot — Gujarat Technological University (GTU)</div>
+          <div class="edu-degree">Diploma in Electronics &amp; Communication Engineering (EC)</div>
+          <div class="edu-school">Government Polytechnic, Rajkot — Gujarat Technological University (GTU)</div>
         </div>
         <span class="edu-year">GTU Certified</span>
       </div>
