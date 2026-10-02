@@ -133,27 +133,31 @@
       margin-top: 1.5px;
     }
 
-    .contact-line {
+    .contact-info {
+      margin-top: 6px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 2.5px;
+    }
+
+    .contact-row {
+      display: flex;
       align-items: center;
-      gap: 3px 12px;
+      gap: 10px;
       font-size: 10.5px;
       color: var(--text-muted);
-      margin-top: 6px;
     }
 
-    .contact-line span:not(:last-child)::after {
-      content: "•";
-      margin-left: 12px;
+    .contact-row .sep {
       color: #9ca3af;
+      font-size: 10px;
     }
 
-    .contact-line a {
+    .contact-row a {
       color: var(--accent);
       text-decoration: none;
     }
-    .contact-line a:hover {
+    .contact-row a:hover {
       text-decoration: underline;
     }
 
@@ -301,17 +305,17 @@
       font-weight: 600;
     }
 
-    /* Page 2 Specific Spacing */
+    /* Page 2 Specific Spacing (Generous & Balanced) */
     .page-2 .section {
-      margin-bottom: 14px;
+      margin-bottom: 22px;
     }
 
     .page-2 .section-title {
-      margin-bottom: 7px;
+      margin-bottom: 9px;
     }
 
     .project-entry {
-      margin-bottom: 11px;
+      margin-bottom: 16px;
     }
     .project-entry:last-child {
       margin-bottom: 0;
@@ -321,45 +325,45 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .project-title {
-      font-size: 12px;
+      font-size: 12.2px;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .project-type {
-      font-size: 10.8px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--accent);
     }
 
     .project-desc {
-      font-size: 11px;
+      font-size: 11.2px;
       color: var(--text-secondary);
-      margin-bottom: 2.5px;
-      line-height: 1.45;
+      margin-bottom: 4px;
+      line-height: 1.5;
     }
 
     .project-specs {
-      font-size: 10.6px;
+      font-size: 10.8px;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* Web Projects */
     .web-projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px 18px;
-      margin-top: 4px;
+      gap: 12px 20px;
+      margin-top: 6px;
     }
 
     .web-proj-item {
-      font-size: 10.8px;
-      line-height: 1.45;
+      font-size: 11px;
+      line-height: 1.48;
     }
 
     .web-proj-name {
@@ -370,7 +374,7 @@
     .web-proj-tech {
       font-weight: 600;
       color: var(--accent);
-      font-size: 10.4px;
+      font-size: 10.5px;
     }
 
     /* Education */
@@ -378,22 +382,23 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      margin-top: 2px;
     }
 
     .edu-deg {
-      font-size: 12px;
+      font-size: 12.2px;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .edu-inst {
-      font-size: 10.8px;
+      font-size: 11px;
       color: var(--text-secondary);
-      margin-top: 1.5px;
+      margin-top: 2px;
     }
 
     .edu-year {
-      font-size: 10.8px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-muted);
     }
@@ -433,6 +438,10 @@
       }
 
       .page-2 .section {
+        margin-bottom: 18px;
+      }
+
+      .page-2 .project-entry {
         margin-bottom: 13px;
       }
 
@@ -473,12 +482,19 @@
         <div class="title-role">HYBRID / PRODUCT DEVELOPMENT ENGINEER</div>
         <div class="title-sub">Electronics + Embedded Firmware + Web Backend</div>
         
-        <div class="contact-line">
-          <span>Rajkot, Gujarat, India</span>
-          <span>+91 9773427049</span>
-          <span><a href="mailto:pratikmandani61508@gmail.com">pratikmandani61508@gmail.com</a></span>
-          <span><a href="https://pratik-mandani.github.io/" target="_blank">pratik-mandani.github.io</a></span>
-          <span><a href="https://github.com/pratik-mandani/pratik-mandani" target="_blank">github.com/pratik-mandani/pratik-mandani</a></span>
+        <div class="contact-info">
+          <div class="contact-row">
+            <span>Rajkot, Gujarat, India</span>
+            <span class="sep">•</span>
+            <span>+91 9773427049</span>
+            <span class="sep">•</span>
+            <span><a href="mailto:pratikmandani61508@gmail.com">pratikmandani61508@gmail.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span>Portfolio: <a href="https://pratik-mandani.github.io/" target="_blank">pratik-mandani.github.io</a></span>
+            <span class="sep">•</span>
+            <span>GitHub: <a href="https://github.com/pratik-mandani/pratik-mandani" target="_blank">github.com/pratik-mandani/pratik-mandani</a></span>
+          </div>
         </div>
       </header>
 
