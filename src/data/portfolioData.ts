@@ -425,8 +425,8 @@ export const moreWebProjects: WebProjectItem[] = [
   {
     id: 'ecombiz',
     name: 'EcomBiz',
-    category: 'ecommerce',
-    categoryLabel: 'E-Commerce',
+    category: 'business',
+    categoryLabel: 'Business',
     liveUrl: 'https://ecombiz.in/',
     techStack: ['PHP', 'Laravel', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'],
     role: 'Frontend + Backend',
