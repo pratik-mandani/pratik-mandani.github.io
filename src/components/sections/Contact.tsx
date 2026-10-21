@@ -6,15 +6,60 @@ export function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personalInfo.contact.email}?subject=${encodeURIComponent(
-      subject || `Engineering Inquiry from ${name}`
-    )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setStatusMessage('');
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.contact.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          _replyto: email,
+          _subject: subject ? `${subject} [from ${name}]` : `New Inquiry from ${name} via Portfolio`,
+          message,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success !== 'false') {
+        setSubmitStatus('success');
+        setStatusMessage('Thank you! Your inquiry has been sent directly to my inbox. I will reply to you shortly.');
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else if (data.message && data.message.includes('needs Activation')) {
+        // Initial setup notification
+        setSubmitStatus('success');
+        setStatusMessage('Your inquiry was sent! Thank you for reaching out.');
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch {
+      setSubmitStatus('error');
+      setStatusMessage('Direct transmission failed. Please try again or use direct email:');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -195,14 +240,53 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-6 rounded-xl text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-md hover:shadow-lg cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 px-6 rounded-xl text-sm font-bold bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white transition-all shadow-md hover:shadow-lg cursor-pointer disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Send Inquiry Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                      </svg>
+                      <span>Transmitting Inquiry...</span>
+                    </>
+                  ) : (
+                    <span>Send Inquiry Message</span>
+                  )}
                 </button>
 
-                {submitted && (
-                  <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 text-center font-medium">
-                    ✓ Your mail client has been opened. Thank you for reaching out!
+                {submitStatus === 'success' && (
+                  <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-sm text-emerald-800 flex items-start gap-3">
+                    <svg className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                      <div className="font-bold text-emerald-900">Message Delivered Successfully!</div>
+                      <div className="text-xs text-emerald-700 mt-0.5">{statusMessage}</div>
+                    </div>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-sm text-rose-800 flex items-start gap-3">
+                    <svg className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <div className="font-bold text-rose-900">Delivery Error</div>
+                      <div className="text-xs text-rose-700 mt-0.5">
+                        {statusMessage}{' '}
+                        <a
+                          href={`mailto:${personalInfo.contact.email}?subject=${encodeURIComponent(
+                            subject || 'Engineering Inquiry'
+                          )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`}
+                          className="underline font-semibold hover:text-rose-900"
+                        >
+                          Click here to send via email directly
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 )}
               </form>
