@@ -411,8 +411,8 @@
     @media print {
       body {
         background-color: #ffffff;
-        font-size: 10.6px;
-        line-height: 1.4;
+        font-size: 10.8px;
+        line-height: 1.48;
       }
 
       .no-print {
@@ -435,19 +435,81 @@
 
       @page {
         size: A4 portrait;
-        margin: 9.5mm 13mm 9.5mm 13mm;
+        margin: 10mm 14mm 10mm 14mm;
       }
 
-      .section {
-        margin-bottom: 10px;
+      /* Page 1 Print Spacing (Open & Breathable) */
+      .header {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
       }
 
+      .section-title {
+        font-size: 11.5px;
+        padding-bottom: 3.5px;
+        margin-bottom: 8px;
+      }
+
+      .page-1 .section {
+        margin-bottom: 16px;
+      }
+
+      .summary-text {
+        font-size: 10.8px;
+        line-height: 1.52;
+      }
+
+      .skills-grid {
+        gap: 9px 22px;
+      }
+
+      .skill-group {
+        font-size: 10.8px;
+        line-height: 1.48;
+      }
+
+      .bullet-grid {
+        gap: 3.5px 20px;
+        line-height: 1.42;
+        font-size: 10.5px;
+      }
+
+      .job-progression {
+        margin-bottom: 3px;
+      }
+
+      .job-meta-note {
+        margin-bottom: 4px;
+      }
+
+      /* Page 2 Print Spacing (Generous & Balanced across page) */
       .page-2 .section {
-        margin-bottom: 18px;
+        margin-bottom: 24px;
       }
 
       .page-2 .project-entry {
-        margin-bottom: 13px;
+        margin-bottom: 16px;
+      }
+
+      .page-2 .project-desc {
+        font-size: 11px;
+        line-height: 1.5;
+        margin-bottom: 4px;
+      }
+
+      .page-2 .project-specs {
+        font-size: 10.6px;
+        line-height: 1.5;
+      }
+
+      .page-2 .web-projects-grid {
+        gap: 14px 22px;
+        margin-top: 6px;
+      }
+
+      .page-2 .web-proj-item {
+        font-size: 10.8px;
+        line-height: 1.48;
       }
 
       .page-break-before {
