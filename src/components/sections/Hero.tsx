@@ -115,15 +115,50 @@ export function Hero() {
 
           </div>
 
-          {/* Right Column: Mirrored Workstation Graphic */}
+          {/* Right Column: Lab Workstation & Engineer Portrait */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-            <div className="w-full max-w-[280px] sm:max-w-md lg:max-w-none mx-auto">
-              <img
-                src="/images/hero-workstation.webp"
-                alt="Product Development & Full-Stack Engineer Workstation"
-                className="w-full h-auto object-contain select-none drop-shadow-sm hover:scale-[1.015] transition-transform duration-300"
-                loading="eager"
-              />
+            <div className="w-full max-w-[340px] sm:max-w-md lg:max-w-none mx-auto">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xl shadow-slate-200/60 group">
+                <img
+                  src="/images/profile/pratik-lab.jpg"
+                  alt="Pratik Mandani at Product Development & Embedded Lab Workstation"
+                  className="w-full h-auto object-cover select-none transition-transform duration-700 group-hover:scale-[1.02]"
+                  loading="eager"
+                />
+
+                {/* Inner Border Ring */}
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl sm:rounded-3xl pointer-events-none"></div>
+
+                {/* Top-Right Telemetry / Status Pill */}
+                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-mono font-medium text-white shadow-lg flex items-center gap-1.5 select-none">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>SYS // R&amp;D LAB</span>
+                </div>
+
+                {/* Bottom Overlay Info Ribbon */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-3.5 sm:p-5 pt-8 select-none">
+                  <div className="flex items-end justify-between text-white">
+                    <div>
+                      <div className="font-bold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
+                        <span>Pratik Mandani</span>
+                        <span className="text-[10px] font-mono font-semibold px-1.5 py-0.2 rounded bg-blue-500/30 text-blue-300 border border-blue-400/40">
+                          HYBRID ENG
+                        </span>
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-slate-300 font-mono tracking-tight mt-0.5">
+                        Firmware • Hardware • Full-Stack Web
+                      </div>
+                    </div>
+
+                    <div className="hidden sm:block text-right">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-slate-200 border border-white/15">
+                        7+ YRS EXP
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
 
